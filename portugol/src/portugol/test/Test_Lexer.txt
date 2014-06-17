@@ -1,0 +1,23 @@
+programa Example;
+var 
+int num = 10;
+variavel_char = 'a';
+real l = 3.14;
+Inicio
+	//Comeco do meu programa
+	/*1-Inicio ler
+			/*2-Inicio/+ //  2-Fim*/ 
+	/*3-Inicio const 3-Fim*/ /*4-Inicio Ola 4-Fim*/ program 1-Fim*/ 
+        
+        enquanto (num<=10) faca;	se num=0 entao;
+			escreva  (num);
+
+
+fim se;
+        num--;
+	fim enquanto;
+	para passo ate entao
+	fim para;
+	repita ate num = 0;
+	num <- 10 + 5;
+fim.

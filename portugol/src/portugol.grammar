@@ -1,0 +1,135 @@
+/*Autor: Anderson Nunes
+      Fabio Nascimento
+*/
+
+Package portugol;
+
+Helpers
+
+            //ascii_char = [32 .. 127];
+            all_char = [0..0xffff];
+
+      //letras e digitos
+            
+            letras_minus = ['a'..'z'] ; 
+            letras_maius = ['A'..'Z'] ;
+            digitos = ['0'..'9'] ;
+            sublinhado = '_' ;
+
+
+      //caracteres nao impressos
+            tab = 9;    //horizontal tab
+            cr = 13;    //carriage return
+            lf = 10;    //line feed
+            eol = cr lf| cr | lf ;         
+            branco = ' ';
+            //aspas = 34 | 39;
+
+States
+
+      normal, comentario;
+
+Tokens
+      //palavras reservadas               
+    
+      {normal} programa = 'programa' ;             
+      {normal} inicio = 'inicio' ;
+      {normal} fim = 'fim.' ;
+      {normal} const = 'const';
+      {normal} var = 'var' ;                             
+      {normal} escreva = 'escreva' ;
+      {normal} leia = 'leia' ;
+      {normal} inteiro = 'inteiro' ;
+      {normal} real = 'real' ;
+      {normal} caractere = 'caractere' ;
+      {normal} div = 'div' ;     //divisao inteira
+      // {normal} boolean = 'boolean' ;
+      //--------------------------------------------
+      //if then
+      {normal} se = 'se' ;
+      {normal} entao = 'entao';
+      {normal} fim_se = 'fim'branco'se' ;
+      //case 
+      {normal} avalie = 'avalie';
+      {normal} caso = 'caso'; 
+      //{normal} padrao = 'padrao';
+      {normal} fim_avalie = 'fim'branco'avalie' ;
+ 
+      {normal} senao = 'senao'; //if e avalie
+      {normal} faca = 'faca'; // enquanto e para
+      {normal} ate = 'ate';  // repita e para
+
+      //while
+      {normal} enquanto = 'enquanto';
+      {normal} fim_enquanto = 'fim'branco'enquanto' ;
+ 
+      {normal} repita = 'repita' ;
+      //for
+      {normal} para = 'para'; 
+      {normal} de = 'de';
+      {normal} passo = 'passo';
+      {normal} pare = 'pare';
+      {normal} continue = 'continue';
+      {normal} fim_para = 'fim'branco'para' ;
+      //--------------------------------
+      //simbolos aritmeticos
+      {normal} mais = '+' ;
+      {normal} menos = '-' ;
+      {normal} produto = '*' ;
+      {normal} divisao = '/' ; 
+      {normal} incremento = '++' ;
+      {normal} decremento = '--' ;
+      {normal} atribuicao = '<-' ;
+
+      //simbolos separadores
+      {normal} virgula = ',' ;
+      {normal} dois_pts = ':' ;
+      {normal} pt_virg = ';' ;
+      //{normal} pt = '.' ;
+      {normal} abre_parantes = '(' ;
+      {normal} fecha_parentes = ')' ;
+      //{normal} abre_chave = '{';
+      //{normal} fecha_chave = '}';
+      {normal} abre_colchete = '[' ;
+      {normal} fecha_colchete = ']' ;
+      {normal} aspas_sp = 39 ;
+      //{normal} aspas_dp = 34 ;
+
+      //simbolos booleanos
+      {normal} xor = 'xor' ;
+      {normal} ou = 'ou' ;
+      {normal} nao = 'nao' ;
+      {normal} e = 'e' ;
+      {normal} igual = '=' ;
+      {normal} diferente = '<>' ;
+      {normal} maior = '>' ;
+      {normal} menor = '<' ;     
+      {normal} maior_igual = '>=' ;
+      {normal} menor_igual = '<=' ;
+
+
+      //Identificadores
+      {normal} identificador = (sublinhado | letras_minus | letras_maius)(letras_minus | letras_maius | digitos | sublinhado)*;
+
+      //Texto  //por enquanto deixar sem isso
+      //{normal} texto = aspas(letras_maius|letras_minus|digitos|sublinhado)*aspas;         //como declarar um tipo texto
+
+      //Numeros
+      {normal} num_int = digitos+;
+      {normal} num_real = digitos+'.'digitos+;
+
+      //all_espaco
+      {normal} all_espaco = (branco | tab | eol )+ ;
+
+      //Comentarios
+      {normal} coment_linha = '//' [all_char - [lf + cr]]*;
+      //comentario Aninhado
+      {normal->comentario, comentario} coment_aninhado = '/*'; 
+      {comentario} coment_escopo = [all_char - ['*' + '/']]*;
+      {comentario} coment_estrela = '*';
+      {comentario} coment_barra = '/';
+      {comentario} coment_fim = '*/';
+        
+
+Ignored Tokens
+      all_espaco, coment_linha, coment_aninhado, coment_escopo, coment_estrela, coment_barra, coment_fim;
