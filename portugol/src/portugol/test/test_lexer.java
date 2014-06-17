@@ -12,7 +12,7 @@ import portugol.node.EOF;
 
 public class test_lexer {
     public static void main(String[] args) throws LexerException, IOException {
-        File f = new File("/home/fabio/Desktop/UFS/2014.1/LFT/Compilador/GRAMATICA/src/portugol/test/Test_Lexer.txt");
+        File f = new File("/home/fabio/git/LFT_eclipse/portugol/src/portugol/test/Test_Lexer.txt");
         New_Lexer l = new New_Lexer(new PushbackReader(new FileReader(f)));
         String lexer = "";
         int linha = 0;
