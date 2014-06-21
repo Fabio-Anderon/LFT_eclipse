@@ -124,7 +124,7 @@ Tokens
       //Comentarios
       {normal} coment_linha = '//' [all_char - [lf + cr]]*;
       //comentario Aninhado
-      {normal->comentario, comentario} coment_aninhado = '/*'; 
+      {normal->comentario, comentario} coment_aninhado = '/*' [all_char - ['*' + '/']]* ;
       {comentario} coment_escopo = [all_char - ['*' + '/']]*;
       {comentario} coment_estrela = '*';
       {comentario} coment_barra = '/';
@@ -132,4 +132,4 @@ Tokens
         
 
 Ignored Tokens
-      all_espaco, coment_linha, coment_aninhado, coment_escopo, coment_estrela, coment_barra, coment_fim;
+      all_espaco, coment_linha, coment_aninhado, coment_estrela, coment_barra, coment_fim;

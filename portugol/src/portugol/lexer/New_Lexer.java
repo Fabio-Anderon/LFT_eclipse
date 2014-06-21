@@ -4,49 +4,43 @@ import portugol.node.*;
 
 public class New_Lexer extends Lexer {
 
-	private int count;
-	private TComentAninhado comment;
-	private StringBuffer text;
-	
-	// We define a constructor
-	public New_Lexer (java.io.PushbackReader in) { 
-		super(in);
-	}
-	// We define a filter that recognizes nested comments.
-	protected void filter() throws LexerException { 
-		// if we are in the comment state
-		if(state.equals(State.COMENTARIO)){ 
-			// if we are just entering this state
-			if(comment == null){ 
-				// The token is supposed to be a comment.
-				// We keep a reference to it and set the count to one
-				comment = (TComentAninhado) token;
-				text = new StringBuffer(comment.getText());
-				count = 1;
-				token = null; // continue to scan the input.
-			}else{
-				// we were already in the comment state
-				if (token instanceof EOF){
+    private int count;
+    private TComentAninhado comment;
+    private StringBuffer text;
+
+    public New_Lexer(java.io.PushbackReader in) {
+
+        super(in);
+    }
+
+    protected void filter() throws LexerException {
+        if (state.equals(State.COMENTARIO)) {
+            if (comment == null) {
+                comment = (TComentAninhado) token;
+                text = new StringBuffer(comment.getText());
+                count = 1;
+                token = null;
+            } else {
+                text.append(token.getText());
+                if (token instanceof TComentAninhado) {
+                    count++;
+                } else if (token instanceof TComentFim) {
+                    count--;
+                }
+                if (token instanceof EOF) {
                     throw new LexerException(null, "token comentario desbalanceado");
-				}
-				
-				text.append(token.getText()); // accumulate the text.
-				if(token instanceof TComentAninhado)
-					count++;
-				else if(token instanceof TComentFim)
-					count--;
-				if(count != 0)
-					token = null; // continue to scan the input.
-				else{
-					
-				    comment.setText(text.toString());
-					token = comment; //return a comment with the full text.
-					
-					state = State.NORMAL; //go back to normal.
-					comment = null; // We release this reference.
-				}
-				
-			}
-		}
-	}
+                }
+                if (count != 0) {
+                    token = null;
+                } else {
+                    //Final de um aninhamento
+                	String texto = text.toString();
+                    comment.setText(texto);
+                    token = comment;
+                    state = State.NORMAL;
+                    comment = null;
+                }
+            }
+        }
+    }
 }

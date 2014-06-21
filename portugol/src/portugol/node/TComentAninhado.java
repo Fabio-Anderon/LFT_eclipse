@@ -7,14 +7,14 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class TComentAninhado extends Token
 {
-    public TComentAninhado()
+    public TComentAninhado(String text)
     {
-        super.setText("/*");
+        setText(text);
     }
 
-    public TComentAninhado(int line, int pos)
+    public TComentAninhado(String text, int line, int pos)
     {
-        super.setText("/*");
+        setText(text);
         setLine(line);
         setPos(pos);
     }
@@ -22,19 +22,12 @@ public final class TComentAninhado extends Token
     @Override
     public Object clone()
     {
-      return new TComentAninhado(getLine(), getPos());
+      return new TComentAninhado(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTComentAninhado(this);
-    }
-
-    @Override
-    public void setText(@SuppressWarnings("unused") String text)
-    {
-        super.setText(text);
-        //throw new RuntimeException("Cannot change TComentAninhado text.");
     }
 }
