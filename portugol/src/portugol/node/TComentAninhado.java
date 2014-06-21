@@ -31,9 +31,9 @@ public final class TComentAninhado extends Token
         ((Analysis) sw).caseTComentAninhado(this);
     }
 
-/*    @Override
+    @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
         throw new RuntimeException("Cannot change TComentAninhado text.");
-    }*/
+    }
 }
