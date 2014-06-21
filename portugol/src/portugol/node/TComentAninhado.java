@@ -34,6 +34,7 @@ public final class TComentAninhado extends Token
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TComentAninhado text.");
+        super.setText(text);
+        //throw new RuntimeException("Cannot change TComentAninhado text.");
     }
 }
