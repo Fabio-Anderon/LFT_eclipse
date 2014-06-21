@@ -15,6 +15,7 @@ Helpers
             letras_maius = ['A'..'Z'] ;
             digitos = ['0'..'9'] ;
             sublinhado = '_' ;
+            barraestrela = '/*';
 
 
       //caracteres nao impressos
@@ -124,7 +125,7 @@ Tokens
       //Comentarios
       {normal} coment_linha = '//' [all_char - [lf + cr]]*;
       //comentario Aninhado
-      {normal->comentario, comentario} coment_aninhado = '/*' [all_char - ['*' + '/']]* ;
+      {normal->comentario, comentario} coment_aninhado = barraestrela;
       {comentario} coment_escopo = [all_char - ['*' + '/']]*;
       {comentario} coment_estrela = '*';
       {comentario} coment_barra = '/';

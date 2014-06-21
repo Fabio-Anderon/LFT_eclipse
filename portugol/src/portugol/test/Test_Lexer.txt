@@ -6,9 +6,9 @@ real l = 3.14;
 Inicio
    /*1-Inicio ler
 			* ajskdhjs
-			/* */ *
-			*******/*2-Inicio/+ //  2-Fim*/ 
-	/*3-Inicio const 3-Fim*/ /*4-Inicio Ola 4-Fim*/ program*/ 
+	/j  / j		/*2-Inicio
+			*******/*2-Fim/+ //  1-fim*/ 
+	/*3-Inicio const 3-Fim*/ /*4-Inicio Ola 4-Fim*/ 
 	
 	//Comeco do meu programa
 	
