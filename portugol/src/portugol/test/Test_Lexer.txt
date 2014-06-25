@@ -1,7 +1,7 @@
 programa Example;
 var 
 int num = 10;
-variavel_char = 'a';
+variavel_char = 'Testando\'String';
 real l = 3.14;
 Inicio
    /*1-Inicio ler
@@ -12,6 +12,7 @@ Inicio
 	
 	//Comeco do meu programa
 	
+			
         
         enquanto (num<=10) faca;	se num=0 entao;
 			escreva  (num);

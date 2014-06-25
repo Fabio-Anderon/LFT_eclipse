@@ -327,12 +327,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTAspasSp(TAspasSp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTXor(TXor node)
     {
         defaultCase(node);
@@ -406,6 +400,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTNumReal(TNumReal node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTString(TString node)
     {
         defaultCase(node);
     }

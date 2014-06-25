@@ -15,7 +15,10 @@ Helpers
             letras_maius = ['A'..'Z'] ;
             digitos = ['0'..'9'] ;
             sublinhado = '_' ;
+            aspas_simples = 39;
+            //aspas = 34 | 39;
             barraestrela = '/*';
+            barrainvert = 92;
 
 
       //caracteres nao impressos
@@ -24,7 +27,6 @@ Helpers
             lf = 10;    //line feed
             eol = cr lf| cr | lf ;         
             branco = ' ';
-            //aspas = 34 | 39;
 
 States
 
@@ -93,9 +95,7 @@ Tokens
       //{normal} fecha_chave = '}';
       {normal} abre_colchete = '[' ;
       {normal} fecha_colchete = ']' ;
-      {normal} aspas_sp = 39 ;
-      //{normal} aspas_dp = 34 ;
-
+      
       //simbolos booleanos
       {normal} xor = 'xor' ;
       {normal} ou = 'ou' ;
@@ -112,12 +112,13 @@ Tokens
       //Identificadores
       {normal} identificador = (sublinhado | letras_minus | letras_maius)(letras_minus | letras_maius | digitos | sublinhado)*;
 
-      //Texto  //por enquanto deixar sem isso
-      //{normal} texto = aspas(letras_maius|letras_minus|digitos|sublinhado)*aspas;         //como declarar um tipo texto
-
       //Numeros
       {normal} num_int = digitos+;
       {normal} num_real = digitos+'.'digitos+;
+
+       //string
+      {normal} string = aspas_simples [[all_char - [lf + cr]] - [aspas_simples + barrainvert]]* 
+                        (barrainvert+ aspas_simples? [[all_char - [lf + cr]] - [aspas_simples + barrainvert]]*)* aspas_simples;
 
       //all_espaco
       {normal} all_espaco = (branco | tab | eol )+ ;
@@ -134,3 +135,12 @@ Tokens
 
 Ignored Tokens
       all_espaco, coment_linha, coment_aninhado, coment_estrela, coment_barra, coment_fim;
+
+Productions
+      programa = T.programa identificador inicio {declaracao} {comando} fim;
+      declaracao  = tipo ':' {var ','} var ';' | const identificador valor ';' ;  
+      tipo = real | inteiro | caractere;
+      var = identificador | identificador '[' num_int ']';
+      valor =  string | num_int | num_real; 
+
+      P.caractere = [all_char];

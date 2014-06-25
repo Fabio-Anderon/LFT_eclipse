@@ -54,7 +54,6 @@ public interface Analysis extends Switch
     void caseTFechaParentes(TFechaParentes node);
     void caseTAbreColchete(TAbreColchete node);
     void caseTFechaColchete(TFechaColchete node);
-    void caseTAspasSp(TAspasSp node);
     void caseTXor(TXor node);
     void caseTOu(TOu node);
     void caseTNao(TNao node);
@@ -68,6 +67,7 @@ public interface Analysis extends Switch
     void caseTIdentificador(TIdentificador node);
     void caseTNumInt(TNumInt node);
     void caseTNumReal(TNumReal node);
+    void caseTString(TString node);
     void caseTAllEspaco(TAllEspaco node);
     void caseTComentLinha(TComentLinha node);
     void caseTComentAninhado(TComentAninhado node);
