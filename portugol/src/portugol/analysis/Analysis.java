@@ -11,6 +11,9 @@ public interface Analysis extends Switch
     Object getOut(Node node);
     void setOut(Node node, Object o);
 
+    void caseStart(Start node);
+    void caseAPrograma(APrograma node);
+
     void caseTPrograma(TPrograma node);
     void caseTInicio(TInicio node);
     void caseTFim(TFim node);

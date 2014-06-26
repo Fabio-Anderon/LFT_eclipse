@@ -143,4 +143,4 @@ Productions
       var = identificador | identificador '[' num_int ']';
       valor =  string | num_int | num_real; 
 
-      P.caractere = [all_char];
+      
