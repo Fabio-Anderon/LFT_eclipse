@@ -13,6 +13,35 @@ public interface Analysis extends Switch
 
     void caseStart(Start node);
     void caseAPrograma(APrograma node);
+    void caseAVariavelDeclaracao(AVariavelDeclaracao node);
+    void caseAConstDeclaracao(AConstDeclaracao node);
+    void caseADeclVar(ADeclVar node);
+    void caseARealTipo(ARealTipo node);
+    void caseAIntTipo(AIntTipo node);
+    void caseACharTipo(ACharTipo node);
+    void caseAIdVariavel(AIdVariavel node);
+    void caseAVetorVariavel(AVetorVariavel node);
+    void caseAStringValor(AStringValor node);
+    void caseANumIntValor(ANumIntValor node);
+    void caseANumRealValor(ANumRealValor node);
+    void caseAAtribuicaoComando(AAtribuicaoComando node);
+    void caseALeiaComando(ALeiaComando node);
+    void caseAEscrevaComando(AEscrevaComando node);
+    void caseASeComando(ASeComando node);
+    void caseAAvalieComando(AAvalieComando node);
+    void caseAEnquantoComando(AEnquantoComando node);
+    void caseARepitaComando(ARepitaComando node);
+    void caseAParaComando(AParaComando node);
+    void caseAComandoPtVirg(AComandoPtVirg node);
+    void caseAExpVirgula(AExpVirgula node);
+    void caseAElseParte(AElseParte node);
+    void caseACasoOpcao(ACasoOpcao node);
+    void caseAPadrao(APadrao node);
+    void caseAPasso(APasso node);
+    void caseAIPara(AIPara node);
+    void caseANPara(ANPara node);
+    void caseAExp(AExp node);
+    void caseAExpLogica(AExpLogica node);
 
     void caseTPrograma(TPrograma node);
     void caseTInicio(TInicio node);

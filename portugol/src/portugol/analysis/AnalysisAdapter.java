@@ -81,6 +81,180 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAVariavelDeclaracao(AVariavelDeclaracao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAConstDeclaracao(AConstDeclaracao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADeclVar(ADeclVar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARealTipo(ARealTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIntTipo(AIntTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACharTipo(ACharTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdVariavel(AIdVariavel node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVetorVariavel(AVetorVariavel node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAStringValor(AStringValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANumIntValor(ANumIntValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANumRealValor(ANumRealValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAtribuicaoComando(AAtribuicaoComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseALeiaComando(ALeiaComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEscrevaComando(AEscrevaComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASeComando(ASeComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAvalieComando(AAvalieComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEnquantoComando(AEnquantoComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARepitaComando(ARepitaComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAParaComando(AParaComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComandoPtVirg(AComandoPtVirg node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpVirgula(AExpVirgula node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAElseParte(AElseParte node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACasoOpcao(ACasoOpcao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPadrao(APadrao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPasso(APasso node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIPara(AIPara node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANPara(ANPara node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExp(AExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogica(AExpLogica node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTPrograma(TPrograma node)
     {
         defaultCase(node);
