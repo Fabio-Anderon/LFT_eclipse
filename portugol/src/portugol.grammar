@@ -45,7 +45,6 @@ Tokens
       {normal} inteiro = 'inteiro' ;
       {normal} real = 'real' ;
       {normal} caractere = 'caractere' ;
-      {normal} div = 'div' ;     //divisao inteira
       // {normal} boolean = 'boolean' ;
       //--------------------------------------------
       //if then
@@ -170,5 +169,31 @@ n_para = num_int;
 
 //Expressões
 
+exp =  exp_aritmetica exp_logica?;
+
+exp_aritmetica = exp mais termo | exp menos termo | termo;
+termo = termo produto fator | termo divisao fator | fator;
+fator = (exp) | menos exp | valor;
+
+
+
+exp : valor
+| var
+| '(' exp ')'
+| '-' exp
+| exp '+' exp
+| exp '-' exp
+| exp '*' exp
+| exp '/' exp
+| exp_logica
+
+
+//Menor Precedência
+exp_logica = exp_logica igual expl0 | exp_logica diferente expl0 | exp_logica menor_igual expl0
+| exp_logica maior_igual expl0 | exp_logica menor expl0 | exp_logica maior expl0 | expl0;
+expl0 = expl0 xor expl1 | expl1;
+expl1 = expl1 ou expl2 | expl2;
+expl2 = expl2 e expl3 | expl3;
+expl3 = nao exp_logica | exp;
 
 
