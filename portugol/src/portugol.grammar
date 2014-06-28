@@ -148,18 +148,18 @@ variavel = {id}identificador | {vetor}identificador abre_colchete num_int fecha_
 valor = {string}string | {num_int}num_int | {num_real}num_real; 
 
 //Corpo de comando
-comando = {atribuicao} variavel atribuicao exp pt_virg
+comando = {atribuicao} variavel atribuicao exp_global pt_virg
 | {leia} leia abre_parantes decl_var* variavel fecha_parentes pt_virg
-| {escreva} escreva abre_parantes exp_virgula* exp fecha_parentes pt_virg
+| {escreva} escreva abre_parantes exp_virgula* exp_global fecha_parentes pt_virg
 | {se} se abre_parantes exp_logica fecha_parentes entao comando_pt_virg+ else_parte? fim_se pt_virg
-| {avalie} avalie abre_parantes exp fecha_parentes caso_opcao* padrao? fim_avalie pt_virg
+| {avalie} avalie abre_parantes exp_global fecha_parentes caso_opcao* padrao? fim_avalie pt_virg
 | {enquanto} enquanto abre_parantes exp_logica fecha_parentes faca comando_pt_virg+ fim_enquanto pt_virg
 | {repita} repita comando_pt_virg+ ate abre_parantes exp_logica fecha_parentes pt_virg
 | {para} para variavel de i_para P.passo? ate n_para faca comando_pt_virg+ fim_para pt_virg;
 
 //Não terminais utilizados no corpo de comandos
 comando_pt_virg = comando pt_virg;
-exp_virgula = exp virgula;      
+exp_virgula = exp_global virgula;      
 else_parte = senao comando_pt_virg+;
 caso_opcao = caso valor dois_pts comando_pt_virg+;   
 padrao  = senao dois_pts comando_pt_virg+;
@@ -168,15 +168,44 @@ i_para = num_int;
 n_para = num_int;
 
 //Expressões
+exp_global = {menos_exp_global} menos exp_global | 
+             {soma}termo soma_exp_termo*  | 
+             {exp_logica}exp_logica;
+termo = {produto}fator mult_fator* ;
+fator = {exp_global_parentes} abre_parantes exp_global fecha_parentes |  
+        {variavel}variavel | 
+        {valor}valor;
 
-exp =  exp_aritmetica exp_logica?;
+soma = {mais}mais | {menos}menos;
+mult = {produto}produto | {divisao}divisao;
 
-exp_aritmetica = exp mais termo | exp menos termo | termo;
-termo = termo produto fator | termo divisao fator | fator;
-fator = (exp) | menos exp | valor;
+soma_exp_termo = soma termo;
+mult_fator = mult fator;
 
 
 
+//Menor Precedência
+exp_logica = {comparacao}[esquerda]:exp_global op_comparacao [direita]:exp_global | 
+             {exp_xor}exp_xor | 
+             {exp_nao}exp_nao;
+exp_xor = {xor}[esquerda]:exp_logica xor [direita]:exp_logica | 
+          {exp_ou}exp_ou;
+exp_ou = {ou}[esquerda]:exp_logica ou [direita]:exp_logica |
+         {exp_e} exp_e;
+exp_e =  [esquerda]:exp_logica e [direita]:exp_logica ;
+exp_nao = nao exp_logica;
+
+
+// Operador com menos precedência de exp-lógica
+op_comparacao = {maior}maior | 
+      {menor}menor | 
+      {igual}igual | 
+      {diferente}diferente |
+      {maior_igual}maior_igual |
+      {menor_igual}menor_igual ; 
+
+
+/*
 exp : valor
 | var
 | '(' exp ')'
@@ -185,15 +214,55 @@ exp : valor
 | exp '-' exp
 | exp '*' exp
 | exp '/' exp
-| exp_logica
+| exp-logica
 
 
-//Menor Precedência
-exp_logica = exp_logica igual expl0 | exp_logica diferente expl0 | exp_logica menor_igual expl0
-| exp_logica maior_igual expl0 | exp_logica menor expl0 | exp_logica maior expl0 | expl0;
-expl0 = expl0 xor expl1 | expl1;
-expl1 = expl1 ou expl2 | expl2;
-expl2 = expl2 e expl3 | expl3;
-expl3 = nao exp_logica | exp;
+exp-logica: exp '=' exp
+| exp '<>' exp
+| exp '<=' exp
+| exp '>=' exp
+| exp '<' exp
+| exp '>' exp
+| 'nao' exp-logica
+| exp-logica 'e' exp-logica
+| exp-logica 'ou' exp-logica
+| exp-logica 'xor' exp-logica
 
 
+
+
+
+
+  // ===== tentativa 3
+exp_global = ex_comparacao opex_comparacao*;
+ex_comparacao = ex_xor opex_xor*;
+ex_xor = ex_ou_soma opex_ou_soma*;
+ex_ou_soma = ex_e_mult opex_e_mult*;
+ex_e_mult = ex_nao opex_nao*;
+exp_caso_base = {exp_global_parentes}abre_parantes exp_global fecha_parentes | 
+                  {variavel}variavel  |
+                  {valor}valor;
+
+
+opex_comparacao = op1 ex_comparacao;
+opex_xor = op2 ex_xor;
+opex_ou_soma = op3 ex_ou_soma;
+opex_e_mult = op4 ex_e_mult;
+opex_nao = op5 exp_caso_base;
+
+
+op1 = {maior}maior | 
+      {menor}menor | 
+      {igual}igual | 
+      {diferente}diferente |
+      {maior_igual}maior_igual |
+      {menor_igual}menor_igual ;
+op2 = xor;
+op3 = {mais}mais | {menos}menos | {ou}ou;
+op4 = {produto}produto | {divisao}divisao  | {e}e;
+op5 = nao;
+
+//=======================================================
+
+
+   */

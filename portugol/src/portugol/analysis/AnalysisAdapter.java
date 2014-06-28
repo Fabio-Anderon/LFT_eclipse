@@ -243,13 +243,169 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAExp(AExp node)
+    public void caseAMenosExpGlobalExpGlobal(AMenosExpGlobalExpGlobal node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpLogica(AExpLogica node)
+    public void caseASomaExpGlobal(ASomaExpGlobal node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpLogicaExpGlobal(AExpLogicaExpGlobal node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAProdutoTermo(AProdutoTermo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpGlobalParentesFator(AExpGlobalParentesFator node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVariavelFator(AVariavelFator node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorFator(AValorFator node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMaisSoma(AMaisSoma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMenosSoma(AMenosSoma node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAProdutoMult(AProdutoMult node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADivisaoMult(ADivisaoMult node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASomaExpTermo(ASomaExpTermo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMultFator(AMultFator node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAComparacaoExpLogica(AComparacaoExpLogica node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpXorExpLogica(AExpXorExpLogica node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpNaoExpLogica(AExpNaoExpLogica node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAXorExpXor(AXorExpXor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpOuExpXor(AExpOuExpXor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAOuExpOu(AOuExpOu node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpEExpOu(AExpEExpOu node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpE(AExpE node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpNao(AExpNao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMaiorOpComparacao(AMaiorOpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMenorOpComparacao(AMenorOpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIgualOpComparacao(AIgualOpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADiferenteOpComparacao(ADiferenteOpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMaiorIgualOpComparacao(AMaiorIgualOpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMenorIgualOpComparacao(AMenorIgualOpComparacao node)
     {
         defaultCase(node);
     }
@@ -310,12 +466,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTCaractere(TCaractere node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTDiv(TDiv node)
     {
         defaultCase(node);
     }
