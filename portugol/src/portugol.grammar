@@ -78,8 +78,6 @@ Tokens
       {normal} menos = '-' ;
       {normal} produto = '*' ;
       {normal} divisao = '/' ; 
-      {normal} incremento = '++' ;
-      {normal} decremento = '--' ;
       {normal} atribuicao = '<-' ;
 
       //simbolos separadores
@@ -112,7 +110,7 @@ Tokens
 
       //Numeros
       {normal} num_int = digitos+;
-      {normal} num_real = digitos+'.'digitos+;
+      {normal} num_real = digitos+','digitos+;
 
        //string
       {normal} string = aspas_simples [[all_char - [lf + cr]] - [aspas_simples + barrainvert]]* 
