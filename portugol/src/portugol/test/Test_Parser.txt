@@ -9,46 +9,36 @@ mult <- num1*num2;
 
 //se
 se(soma<mult)entao	
-escreva('A SOMA É MENOR');;
+escreva('A SOMA É MENOR');
 senao
-escreva('O PRODUTO É MENOR OU IGUAL');;
+escreva('O PRODUTO É MENOR OU IGUAL');
 fim se;
 
 //avalie
 avalie (2+2)
 caso 4: 
-escreva ('resposta correta');;
+escreva ('resposta correta');
 senao:
-leia (x);;
+leia (x);
 fim avalie; 
 
 //enquanto
 enquanto (2>1 e 2<4 ) faca
-escreva('x');;
+escreva('x', -3,1 , -1+2);
 fim enquanto;
 
 //repita
 repita 
-escreva ('trabalho de anderson e fabio');; 
+escreva ('trabalho de anderson e fabio'); 
 ate (1+2 <> 2+1);
 
 //para normal
 para i de 1 ate 5 faca
+/*para /*passo*/*/
 para j de 1 passo 2 ate 10 faca
-escreva('Valor de i = '+i);;
-escreva('Valor de j = '+j);;
-fim para;;
-fim para;
-
-
-
-
-
-
-
-
-
-
-
+escreva('Valor de i = '+i);
+escreva('Valor de j = '+j);
+fim para; //fim para com passo
+fim para; //fim para normal
 
 fim.

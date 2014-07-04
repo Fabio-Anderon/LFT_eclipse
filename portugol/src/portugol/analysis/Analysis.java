@@ -32,7 +32,6 @@ public interface Analysis extends Switch
     void caseAEnquantoComando(AEnquantoComando node);
     void caseARepitaComando(ARepitaComando node);
     void caseAParaComando(AParaComando node);
-    void caseAComandoPtVirg(AComandoPtVirg node);
     void caseAExpVirgula(AExpVirgula node);
     void caseAElseParte(AElseParte node);
     void caseACasoOpcao(ACasoOpcao node);

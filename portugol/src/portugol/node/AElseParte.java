@@ -9,7 +9,7 @@ import portugol.analysis.*;
 public final class AElseParte extends PElseParte
 {
     private TSenao _senao_;
-    private final LinkedList<PComandoPtVirg> _comandoPtVirg_ = new LinkedList<PComandoPtVirg>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public AElseParte()
     {
@@ -18,12 +18,12 @@ public final class AElseParte extends PElseParte
 
     public AElseParte(
         @SuppressWarnings("hiding") TSenao _senao_,
-        @SuppressWarnings("hiding") List<?> _comandoPtVirg_)
+        @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
         setSenao(_senao_);
 
-        setComandoPtVirg(_comandoPtVirg_);
+        setComando(_comando_);
 
     }
 
@@ -32,7 +32,7 @@ public final class AElseParte extends PElseParte
     {
         return new AElseParte(
             cloneNode(this._senao_),
-            cloneList(this._comandoPtVirg_));
+            cloneList(this._comando_));
     }
 
     @Override
@@ -66,29 +66,29 @@ public final class AElseParte extends PElseParte
         this._senao_ = node;
     }
 
-    public LinkedList<PComandoPtVirg> getComandoPtVirg()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoPtVirg_;
+        return this._comando_;
     }
 
-    public void setComandoPtVirg(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoPtVirg e : this._comandoPtVirg_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoPtVirg_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoPtVirg e = (PComandoPtVirg) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoPtVirg_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -97,7 +97,7 @@ public final class AElseParte extends PElseParte
     {
         return ""
             + toString(this._senao_)
-            + toString(this._comandoPtVirg_);
+            + toString(this._comando_);
     }
 
     @Override
@@ -110,7 +110,7 @@ public final class AElseParte extends PElseParte
             return;
         }
 
-        if(this._comandoPtVirg_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -128,13 +128,13 @@ public final class AElseParte extends PElseParte
             return;
         }
 
-        for(ListIterator<PComandoPtVirg> i = this._comandoPtVirg_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoPtVirg) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

@@ -195,12 +195,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAComandoPtVirg(AComandoPtVirg node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseAExpVirgula(AExpVirgula node)
     {
         defaultCase(node);

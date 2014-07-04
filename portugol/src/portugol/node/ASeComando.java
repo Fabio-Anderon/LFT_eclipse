@@ -13,7 +13,7 @@ public final class ASeComando extends PComando
     private PExpLogica _expLogica_;
     private TFechaParentes _fechaParentes_;
     private TEntao _entao_;
-    private final LinkedList<PComandoPtVirg> _comandoPtVirg_ = new LinkedList<PComandoPtVirg>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private PElseParte _elseParte_;
     private TFimSe _fimSe_;
     private TPtVirg _ptVirg_;
@@ -29,7 +29,7 @@ public final class ASeComando extends PComando
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
         @SuppressWarnings("hiding") TFechaParentes _fechaParentes_,
         @SuppressWarnings("hiding") TEntao _entao_,
-        @SuppressWarnings("hiding") List<?> _comandoPtVirg_,
+        @SuppressWarnings("hiding") List<?> _comando_,
         @SuppressWarnings("hiding") PElseParte _elseParte_,
         @SuppressWarnings("hiding") TFimSe _fimSe_,
         @SuppressWarnings("hiding") TPtVirg _ptVirg_)
@@ -45,7 +45,7 @@ public final class ASeComando extends PComando
 
         setEntao(_entao_);
 
-        setComandoPtVirg(_comandoPtVirg_);
+        setComando(_comando_);
 
         setElseParte(_elseParte_);
 
@@ -64,7 +64,7 @@ public final class ASeComando extends PComando
             cloneNode(this._expLogica_),
             cloneNode(this._fechaParentes_),
             cloneNode(this._entao_),
-            cloneList(this._comandoPtVirg_),
+            cloneList(this._comando_),
             cloneNode(this._elseParte_),
             cloneNode(this._fimSe_),
             cloneNode(this._ptVirg_));
@@ -201,29 +201,29 @@ public final class ASeComando extends PComando
         this._entao_ = node;
     }
 
-    public LinkedList<PComandoPtVirg> getComandoPtVirg()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoPtVirg_;
+        return this._comando_;
     }
 
-    public void setComandoPtVirg(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoPtVirg e : this._comandoPtVirg_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoPtVirg_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoPtVirg e = (PComandoPtVirg) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoPtVirg_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -311,7 +311,7 @@ public final class ASeComando extends PComando
             + toString(this._expLogica_)
             + toString(this._fechaParentes_)
             + toString(this._entao_)
-            + toString(this._comandoPtVirg_)
+            + toString(this._comando_)
             + toString(this._elseParte_)
             + toString(this._fimSe_)
             + toString(this._ptVirg_);
@@ -351,7 +351,7 @@ public final class ASeComando extends PComando
             return;
         }
 
-        if(this._comandoPtVirg_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -411,13 +411,13 @@ public final class ASeComando extends PComando
             return;
         }
 
-        for(ListIterator<PComandoPtVirg> i = this._comandoPtVirg_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoPtVirg) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

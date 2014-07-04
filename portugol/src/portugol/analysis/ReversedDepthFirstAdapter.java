@@ -514,9 +514,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getElseParte().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -620,9 +620,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getFimEnquanto().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -685,9 +685,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getAte().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -722,9 +722,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getFimPara().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -762,31 +762,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getPara().apply(this);
         }
         outAParaComando(node);
-    }
-
-    public void inAComandoPtVirg(AComandoPtVirg node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAComandoPtVirg(AComandoPtVirg node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAComandoPtVirg(AComandoPtVirg node)
-    {
-        inAComandoPtVirg(node);
-        if(node.getPtVirg() != null)
-        {
-            node.getPtVirg().apply(this);
-        }
-        if(node.getComando() != null)
-        {
-            node.getComando().apply(this);
-        }
-        outAComandoPtVirg(node);
     }
 
     public void inAExpVirgula(AExpVirgula node)
@@ -829,9 +804,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inAElseParte(node);
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -858,9 +833,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inACasoOpcao(node);
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -895,9 +870,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     {
         inAPadrao(node);
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
             Collections.reverse(copy);
-            for(PComandoPtVirg e : copy)
+            for(PComando e : copy)
             {
                 e.apply(this);
             }

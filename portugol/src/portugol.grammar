@@ -149,18 +149,17 @@ valor = {string}string | {num_int}num_int | {num_real}num_real;
 comando = {atribuicao} variavel atribuicao exp_global pt_virg
 | {leia} leia abre_parantes decl_var* variavel fecha_parentes pt_virg
 | {escreva} escreva abre_parantes exp_virgula* exp_global fecha_parentes pt_virg
-| {se} se abre_parantes exp_logica fecha_parentes entao comando_pt_virg+ else_parte? fim_se pt_virg
+| {se} se abre_parantes exp_logica fecha_parentes entao comando+ else_parte? fim_se pt_virg
 | {avalie} avalie abre_parantes exp_global fecha_parentes caso_opcao* padrao? fim_avalie pt_virg
-| {enquanto} enquanto abre_parantes exp_logica fecha_parentes faca comando_pt_virg+ fim_enquanto pt_virg
-| {repita} repita comando_pt_virg+ ate abre_parantes exp_logica fecha_parentes pt_virg
-| {para} para variavel de i_para P.passo? ate n_para faca comando_pt_virg+ fim_para pt_virg;
+| {enquanto} enquanto abre_parantes exp_logica fecha_parentes faca comando+ fim_enquanto pt_virg
+| {repita} repita comando+ ate abre_parantes exp_logica fecha_parentes pt_virg
+| {para} para variavel de i_para P.passo? ate n_para faca comando+ fim_para pt_virg;
 
 //Não terminais utilizados no corpo de comandos
-comando_pt_virg = comando pt_virg;
 exp_virgula = exp_global virgula;      
-else_parte = senao comando_pt_virg+;
-caso_opcao = caso valor dois_pts comando_pt_virg+;   
-padrao  = senao dois_pts comando_pt_virg+;
+else_parte = senao comando+;
+caso_opcao = caso valor dois_pts comando+;   
+padrao  = senao dois_pts comando+;
 passo = T.passo num_int;
 i_para = num_int; 
 n_para = num_int;

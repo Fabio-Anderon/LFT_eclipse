@@ -517,8 +517,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getEntao().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -625,8 +625,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getFaca().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -661,8 +661,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getRepita().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -737,8 +737,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getFaca().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -752,31 +752,6 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getPtVirg().apply(this);
         }
         outAParaComando(node);
-    }
-
-    public void inAComandoPtVirg(AComandoPtVirg node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAComandoPtVirg(AComandoPtVirg node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAComandoPtVirg(AComandoPtVirg node)
-    {
-        inAComandoPtVirg(node);
-        if(node.getComando() != null)
-        {
-            node.getComando().apply(this);
-        }
-        if(node.getPtVirg() != null)
-        {
-            node.getPtVirg().apply(this);
-        }
-        outAComandoPtVirg(node);
     }
 
     public void inAExpVirgula(AExpVirgula node)
@@ -823,8 +798,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getSenao().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -859,8 +834,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getDoisPts().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }
@@ -891,8 +866,8 @@ public class DepthFirstAdapter extends AnalysisAdapter
             node.getDoisPts().apply(this);
         }
         {
-            List<PComandoPtVirg> copy = new ArrayList<PComandoPtVirg>(node.getComandoPtVirg());
-            for(PComandoPtVirg e : copy)
+            List<PComando> copy = new ArrayList<PComando>(node.getComando());
+            for(PComando e : copy)
             {
                 e.apply(this);
             }

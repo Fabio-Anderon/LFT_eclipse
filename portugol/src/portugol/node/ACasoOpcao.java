@@ -11,7 +11,7 @@ public final class ACasoOpcao extends PCasoOpcao
     private TCaso _caso_;
     private PValor _valor_;
     private TDoisPts _doisPts_;
-    private final LinkedList<PComandoPtVirg> _comandoPtVirg_ = new LinkedList<PComandoPtVirg>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public ACasoOpcao()
     {
@@ -22,7 +22,7 @@ public final class ACasoOpcao extends PCasoOpcao
         @SuppressWarnings("hiding") TCaso _caso_,
         @SuppressWarnings("hiding") PValor _valor_,
         @SuppressWarnings("hiding") TDoisPts _doisPts_,
-        @SuppressWarnings("hiding") List<?> _comandoPtVirg_)
+        @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
         setCaso(_caso_);
@@ -31,7 +31,7 @@ public final class ACasoOpcao extends PCasoOpcao
 
         setDoisPts(_doisPts_);
 
-        setComandoPtVirg(_comandoPtVirg_);
+        setComando(_comando_);
 
     }
 
@@ -42,7 +42,7 @@ public final class ACasoOpcao extends PCasoOpcao
             cloneNode(this._caso_),
             cloneNode(this._valor_),
             cloneNode(this._doisPts_),
-            cloneList(this._comandoPtVirg_));
+            cloneList(this._comando_));
     }
 
     @Override
@@ -126,29 +126,29 @@ public final class ACasoOpcao extends PCasoOpcao
         this._doisPts_ = node;
     }
 
-    public LinkedList<PComandoPtVirg> getComandoPtVirg()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoPtVirg_;
+        return this._comando_;
     }
 
-    public void setComandoPtVirg(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoPtVirg e : this._comandoPtVirg_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoPtVirg_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoPtVirg e = (PComandoPtVirg) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoPtVirg_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -159,7 +159,7 @@ public final class ACasoOpcao extends PCasoOpcao
             + toString(this._caso_)
             + toString(this._valor_)
             + toString(this._doisPts_)
-            + toString(this._comandoPtVirg_);
+            + toString(this._comando_);
     }
 
     @Override
@@ -184,7 +184,7 @@ public final class ACasoOpcao extends PCasoOpcao
             return;
         }
 
-        if(this._comandoPtVirg_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -214,13 +214,13 @@ public final class ACasoOpcao extends PCasoOpcao
             return;
         }
 
-        for(ListIterator<PComandoPtVirg> i = this._comandoPtVirg_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoPtVirg) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

@@ -9,7 +9,7 @@ import portugol.analysis.*;
 public final class ARepitaComando extends PComando
 {
     private TRepita _repita_;
-    private final LinkedList<PComandoPtVirg> _comandoPtVirg_ = new LinkedList<PComandoPtVirg>();
+    private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private TAte _ate_;
     private TAbreParantes _abreParantes_;
     private PExpLogica _expLogica_;
@@ -23,7 +23,7 @@ public final class ARepitaComando extends PComando
 
     public ARepitaComando(
         @SuppressWarnings("hiding") TRepita _repita_,
-        @SuppressWarnings("hiding") List<?> _comandoPtVirg_,
+        @SuppressWarnings("hiding") List<?> _comando_,
         @SuppressWarnings("hiding") TAte _ate_,
         @SuppressWarnings("hiding") TAbreParantes _abreParantes_,
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
@@ -33,7 +33,7 @@ public final class ARepitaComando extends PComando
         // Constructor
         setRepita(_repita_);
 
-        setComandoPtVirg(_comandoPtVirg_);
+        setComando(_comando_);
 
         setAte(_ate_);
 
@@ -52,7 +52,7 @@ public final class ARepitaComando extends PComando
     {
         return new ARepitaComando(
             cloneNode(this._repita_),
-            cloneList(this._comandoPtVirg_),
+            cloneList(this._comando_),
             cloneNode(this._ate_),
             cloneNode(this._abreParantes_),
             cloneNode(this._expLogica_),
@@ -91,29 +91,29 @@ public final class ARepitaComando extends PComando
         this._repita_ = node;
     }
 
-    public LinkedList<PComandoPtVirg> getComandoPtVirg()
+    public LinkedList<PComando> getComando()
     {
-        return this._comandoPtVirg_;
+        return this._comando_;
     }
 
-    public void setComandoPtVirg(List<?> list)
+    public void setComando(List<?> list)
     {
-        for(PComandoPtVirg e : this._comandoPtVirg_)
+        for(PComando e : this._comando_)
         {
             e.parent(null);
         }
-        this._comandoPtVirg_.clear();
+        this._comando_.clear();
 
         for(Object obj_e : list)
         {
-            PComandoPtVirg e = (PComandoPtVirg) obj_e;
+            PComando e = (PComando) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._comandoPtVirg_.add(e);
+            this._comando_.add(e);
         }
     }
 
@@ -247,7 +247,7 @@ public final class ARepitaComando extends PComando
     {
         return ""
             + toString(this._repita_)
-            + toString(this._comandoPtVirg_)
+            + toString(this._comando_)
             + toString(this._ate_)
             + toString(this._abreParantes_)
             + toString(this._expLogica_)
@@ -265,7 +265,7 @@ public final class ARepitaComando extends PComando
             return;
         }
 
-        if(this._comandoPtVirg_.remove(child))
+        if(this._comando_.remove(child))
         {
             return;
         }
@@ -313,13 +313,13 @@ public final class ARepitaComando extends PComando
             return;
         }
 
-        for(ListIterator<PComandoPtVirg> i = this._comandoPtVirg_.listIterator(); i.hasNext();)
+        for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PComandoPtVirg) newChild);
+                    i.set((PComando) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
