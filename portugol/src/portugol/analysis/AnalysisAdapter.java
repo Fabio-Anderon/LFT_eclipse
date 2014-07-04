@@ -321,31 +321,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAComparacaoExpLogica(AComparacaoExpLogica node)
+    public void caseAXorExpLogica(AXorExpLogica node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAExpXorExpLogica(AExpXorExpLogica node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpNaoExpLogica(AExpNaoExpLogica node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAXorExpXor(AXorExpXor node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpOuExpXor(AExpOuExpXor node)
+    public void caseAExpOuExpLogica(AExpOuExpLogica node)
     {
         defaultCase(node);
     }
@@ -363,7 +345,37 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAExpE(AExpE node)
+    public void caseAEExpE(AEExpE node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpIgualExpE(AExpIgualExpE node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpIgual(AExpIgual node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpComparacaoExpIgual(AExpComparacaoExpIgual node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpComparacao(AExpComparacao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpNaoExpComparacao(AExpNaoExpComparacao node)
     {
         defaultCase(node);
     }
@@ -375,37 +387,37 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAMaiorOpComparacao(AMaiorOpComparacao node)
+    public void caseAIgualIgualDiferente(AIgualIgualDiferente node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMenorOpComparacao(AMenorOpComparacao node)
+    public void caseADiferenteIgualDiferente(ADiferenteIgualDiferente node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIgualOpComparacao(AIgualOpComparacao node)
+    public void caseAMaiorOpComparar(AMaiorOpComparar node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseADiferenteOpComparacao(ADiferenteOpComparacao node)
+    public void caseAMenorOpComparar(AMenorOpComparar node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMaiorIgualOpComparacao(AMaiorIgualOpComparacao node)
+    public void caseAMaiorIgualOpComparar(AMaiorIgualOpComparar node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMenorIgualOpComparacao(AMenorIgualOpComparacao node)
+    public void caseAMenorIgualOpComparar(AMenorIgualOpComparar node)
     {
         defaultCase(node);
     }
@@ -598,18 +610,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTDivisao(TDivisao node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTIncremento(TIncremento node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTDecremento(TDecremento node)
     {
         defaultCase(node);
     }

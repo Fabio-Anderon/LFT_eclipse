@@ -167,8 +167,8 @@ n_para = num_int;
 
 //Expressões
 exp_global = {menos_exp_global} menos exp_global | 
-             {soma}termo soma_exp_termo*  | 
-             {exp_logica}exp_logica;
+             {soma}termo soma_exp_termo* |
+             {exp_logica} abre_parantes exp_logica fecha_parentes;
 termo = {produto}fator mult_fator* ;
 fator = {exp_global_parentes} abre_parantes exp_global fecha_parentes |  
         {variavel}variavel | 
@@ -181,24 +181,17 @@ soma_exp_termo = soma termo;
 mult_fator = mult fator;
 
 
-
 //Menor Precedência
-exp_logica = {comparacao}[esquerda]:exp_global op_comparacao [direita]:exp_global | 
-             {exp_xor}exp_xor | 
-             {exp_nao}exp_nao;
-exp_xor = {xor}[esquerda]:exp_logica xor [direita]:exp_logica | 
-          {exp_ou}exp_ou;
-exp_ou = {ou}[esquerda]:exp_logica ou [direita]:exp_logica |
-         {exp_e} exp_e;
-exp_e =  [esquerda]:exp_logica e [direita]:exp_logica ;
-exp_nao = nao exp_logica;
+exp_logica = {xor}exp_logica xor exp_ou | {exp_ou}exp_ou;
+exp_ou = {ou}exp_ou ou exp_e | {exp_e} exp_e;
+exp_e =  {e} exp_e e exp_igual | {exp_igual} exp_igual;
+exp_igual = [esquerda]: exp_global igual_diferente [direita]: exp_global | {exp_comparacao} exp_comparacao;
+exp_comparacao = [esquerda]: exp_global op_comparar [direita]: exp_global | {exp_nao} exp_nao;
+exp_nao = nao abre_parantes exp_logica fecha_parentes;
 
-
-// Operador com menos precedência de exp-lógica
-op_comparacao = {maior}maior | 
+igual_diferente = {igual} igual | {diferente} diferente;
+op_comparar = {maior}maior | 
       {menor}menor | 
-      {igual}igual | 
-      {diferente}diferente |
       {maior_igual}maior_igual |
       {menor_igual}menor_igual ; 
 
