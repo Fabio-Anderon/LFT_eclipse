@@ -2,6 +2,7 @@ package portugol.lexer;
 
 import portugol.node.*;
 
+//Alter
 public class New_Lexer extends Lexer {
 
     private int count;
