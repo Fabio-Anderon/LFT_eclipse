@@ -7,9 +7,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AExpComparacao extends PExpComparacao
 {
-    private PExpGlobal _esquerda_;
+    private PExp _esquerda_;
     private POpComparar _opComparar_;
-    private PExpGlobal _direita_;
+    private PExp _direita_;
 
     public AExpComparacao()
     {
@@ -17,9 +17,9 @@ public final class AExpComparacao extends PExpComparacao
     }
 
     public AExpComparacao(
-        @SuppressWarnings("hiding") PExpGlobal _esquerda_,
+        @SuppressWarnings("hiding") PExp _esquerda_,
         @SuppressWarnings("hiding") POpComparar _opComparar_,
-        @SuppressWarnings("hiding") PExpGlobal _direita_)
+        @SuppressWarnings("hiding") PExp _direita_)
     {
         // Constructor
         setEsquerda(_esquerda_);
@@ -45,12 +45,12 @@ public final class AExpComparacao extends PExpComparacao
         ((Analysis) sw).caseAExpComparacao(this);
     }
 
-    public PExpGlobal getEsquerda()
+    public PExp getEsquerda()
     {
         return this._esquerda_;
     }
 
-    public void setEsquerda(PExpGlobal node)
+    public void setEsquerda(PExp node)
     {
         if(this._esquerda_ != null)
         {
@@ -95,12 +95,12 @@ public final class AExpComparacao extends PExpComparacao
         this._opComparar_ = node;
     }
 
-    public PExpGlobal getDireita()
+    public PExp getDireita()
     {
         return this._direita_;
     }
 
-    public void setDireita(PExpGlobal node)
+    public void setDireita(PExp node)
     {
         if(this._direita_ != null)
         {
@@ -160,7 +160,7 @@ public final class AExpComparacao extends PExpComparacao
         // Replace child
         if(this._esquerda_ == oldChild)
         {
-            setEsquerda((PExpGlobal) newChild);
+            setEsquerda((PExp) newChild);
             return;
         }
 
@@ -172,7 +172,7 @@ public final class AExpComparacao extends PExpComparacao
 
         if(this._direita_ == oldChild)
         {
-            setDireita((PExpGlobal) newChild);
+            setDireita((PExp) newChild);
             return;
         }
 

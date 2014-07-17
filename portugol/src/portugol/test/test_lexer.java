@@ -17,6 +17,7 @@ public class test_lexer {
         String lexer = "";
         int linha = 0;
         
+        
         while (!(l.peek() instanceof EOF)) {
             if (l.peek().getLine() > linha) {
                 linha = l.peek().getLine();

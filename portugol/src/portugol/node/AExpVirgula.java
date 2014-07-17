@@ -7,7 +7,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AExpVirgula extends PExpVirgula
 {
-    private PExpGlobal _expGlobal_;
+    private PExp _exp_;
     private TVirgula _virgula_;
 
     public AExpVirgula()
@@ -16,11 +16,11 @@ public final class AExpVirgula extends PExpVirgula
     }
 
     public AExpVirgula(
-        @SuppressWarnings("hiding") PExpGlobal _expGlobal_,
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TVirgula _virgula_)
     {
         // Constructor
-        setExpGlobal(_expGlobal_);
+        setExp(_exp_);
 
         setVirgula(_virgula_);
 
@@ -30,7 +30,7 @@ public final class AExpVirgula extends PExpVirgula
     public Object clone()
     {
         return new AExpVirgula(
-            cloneNode(this._expGlobal_),
+            cloneNode(this._exp_),
             cloneNode(this._virgula_));
     }
 
@@ -40,16 +40,16 @@ public final class AExpVirgula extends PExpVirgula
         ((Analysis) sw).caseAExpVirgula(this);
     }
 
-    public PExpGlobal getExpGlobal()
+    public PExp getExp()
     {
-        return this._expGlobal_;
+        return this._exp_;
     }
 
-    public void setExpGlobal(PExpGlobal node)
+    public void setExp(PExp node)
     {
-        if(this._expGlobal_ != null)
+        if(this._exp_ != null)
         {
-            this._expGlobal_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -62,7 +62,7 @@ public final class AExpVirgula extends PExpVirgula
             node.parent(this);
         }
 
-        this._expGlobal_ = node;
+        this._exp_ = node;
     }
 
     public TVirgula getVirgula()
@@ -94,7 +94,7 @@ public final class AExpVirgula extends PExpVirgula
     public String toString()
     {
         return ""
-            + toString(this._expGlobal_)
+            + toString(this._exp_)
             + toString(this._virgula_);
     }
 
@@ -102,9 +102,9 @@ public final class AExpVirgula extends PExpVirgula
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expGlobal_ == child)
+        if(this._exp_ == child)
         {
-            this._expGlobal_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -121,9 +121,9 @@ public final class AExpVirgula extends PExpVirgula
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expGlobal_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setExpGlobal((PExpGlobal) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

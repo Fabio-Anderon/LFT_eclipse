@@ -9,7 +9,7 @@ public final class AAtribuicaoComando extends PComando
 {
     private PVariavel _variavel_;
     private TAtribuicao _atribuicao_;
-    private PExpGlobal _expGlobal_;
+    private PExp _exp_;
     private TPtVirg _ptVirg_;
 
     public AAtribuicaoComando()
@@ -20,7 +20,7 @@ public final class AAtribuicaoComando extends PComando
     public AAtribuicaoComando(
         @SuppressWarnings("hiding") PVariavel _variavel_,
         @SuppressWarnings("hiding") TAtribuicao _atribuicao_,
-        @SuppressWarnings("hiding") PExpGlobal _expGlobal_,
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TPtVirg _ptVirg_)
     {
         // Constructor
@@ -28,7 +28,7 @@ public final class AAtribuicaoComando extends PComando
 
         setAtribuicao(_atribuicao_);
 
-        setExpGlobal(_expGlobal_);
+        setExp(_exp_);
 
         setPtVirg(_ptVirg_);
 
@@ -40,7 +40,7 @@ public final class AAtribuicaoComando extends PComando
         return new AAtribuicaoComando(
             cloneNode(this._variavel_),
             cloneNode(this._atribuicao_),
-            cloneNode(this._expGlobal_),
+            cloneNode(this._exp_),
             cloneNode(this._ptVirg_));
     }
 
@@ -100,16 +100,16 @@ public final class AAtribuicaoComando extends PComando
         this._atribuicao_ = node;
     }
 
-    public PExpGlobal getExpGlobal()
+    public PExp getExp()
     {
-        return this._expGlobal_;
+        return this._exp_;
     }
 
-    public void setExpGlobal(PExpGlobal node)
+    public void setExp(PExp node)
     {
-        if(this._expGlobal_ != null)
+        if(this._exp_ != null)
         {
-            this._expGlobal_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -122,7 +122,7 @@ public final class AAtribuicaoComando extends PComando
             node.parent(this);
         }
 
-        this._expGlobal_ = node;
+        this._exp_ = node;
     }
 
     public TPtVirg getPtVirg()
@@ -156,7 +156,7 @@ public final class AAtribuicaoComando extends PComando
         return ""
             + toString(this._variavel_)
             + toString(this._atribuicao_)
-            + toString(this._expGlobal_)
+            + toString(this._exp_)
             + toString(this._ptVirg_);
     }
 
@@ -176,9 +176,9 @@ public final class AAtribuicaoComando extends PComando
             return;
         }
 
-        if(this._expGlobal_ == child)
+        if(this._exp_ == child)
         {
-            this._expGlobal_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -207,9 +207,9 @@ public final class AAtribuicaoComando extends PComando
             return;
         }
 
-        if(this._expGlobal_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setExpGlobal((PExpGlobal) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

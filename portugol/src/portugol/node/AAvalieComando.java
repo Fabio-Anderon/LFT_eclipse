@@ -10,7 +10,7 @@ public final class AAvalieComando extends PComando
 {
     private TAvalie _avalie_;
     private TAbreParantes _abreParantes_;
-    private PExpGlobal _expGlobal_;
+    private PExp _exp_;
     private TFechaParentes _fechaParentes_;
     private final LinkedList<PCasoOpcao> _casoOpcao_ = new LinkedList<PCasoOpcao>();
     private PPadrao _padrao_;
@@ -25,7 +25,7 @@ public final class AAvalieComando extends PComando
     public AAvalieComando(
         @SuppressWarnings("hiding") TAvalie _avalie_,
         @SuppressWarnings("hiding") TAbreParantes _abreParantes_,
-        @SuppressWarnings("hiding") PExpGlobal _expGlobal_,
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TFechaParentes _fechaParentes_,
         @SuppressWarnings("hiding") List<?> _casoOpcao_,
         @SuppressWarnings("hiding") PPadrao _padrao_,
@@ -37,7 +37,7 @@ public final class AAvalieComando extends PComando
 
         setAbreParantes(_abreParantes_);
 
-        setExpGlobal(_expGlobal_);
+        setExp(_exp_);
 
         setFechaParentes(_fechaParentes_);
 
@@ -57,7 +57,7 @@ public final class AAvalieComando extends PComando
         return new AAvalieComando(
             cloneNode(this._avalie_),
             cloneNode(this._abreParantes_),
-            cloneNode(this._expGlobal_),
+            cloneNode(this._exp_),
             cloneNode(this._fechaParentes_),
             cloneList(this._casoOpcao_),
             cloneNode(this._padrao_),
@@ -121,16 +121,16 @@ public final class AAvalieComando extends PComando
         this._abreParantes_ = node;
     }
 
-    public PExpGlobal getExpGlobal()
+    public PExp getExp()
     {
-        return this._expGlobal_;
+        return this._exp_;
     }
 
-    public void setExpGlobal(PExpGlobal node)
+    public void setExp(PExp node)
     {
-        if(this._expGlobal_ != null)
+        if(this._exp_ != null)
         {
-            this._expGlobal_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -143,7 +143,7 @@ public final class AAvalieComando extends PComando
             node.parent(this);
         }
 
-        this._expGlobal_ = node;
+        this._exp_ = node;
     }
 
     public TFechaParentes getFechaParentes()
@@ -278,7 +278,7 @@ public final class AAvalieComando extends PComando
         return ""
             + toString(this._avalie_)
             + toString(this._abreParantes_)
-            + toString(this._expGlobal_)
+            + toString(this._exp_)
             + toString(this._fechaParentes_)
             + toString(this._casoOpcao_)
             + toString(this._padrao_)
@@ -302,9 +302,9 @@ public final class AAvalieComando extends PComando
             return;
         }
 
-        if(this._expGlobal_ == child)
+        if(this._exp_ == child)
         {
-            this._expGlobal_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -356,9 +356,9 @@ public final class AAvalieComando extends PComando
             return;
         }
 
-        if(this._expGlobal_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setExpGlobal((PExpGlobal) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

@@ -382,9 +382,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getPtVirg().apply(this);
         }
-        if(node.getExpGlobal() != null)
+        if(node.getExp() != null)
         {
-            node.getExpGlobal().apply(this);
+            node.getExp().apply(this);
         }
         if(node.getAtribuicao() != null)
         {
@@ -442,20 +442,20 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outALeiaComando(node);
     }
 
-    public void inAEscrevaComando(AEscrevaComando node)
+    public void inAEscrevaExpComando(AEscrevaExpComando node)
     {
         defaultIn(node);
     }
 
-    public void outAEscrevaComando(AEscrevaComando node)
+    public void outAEscrevaExpComando(AEscrevaExpComando node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAEscrevaComando(AEscrevaComando node)
+    public void caseAEscrevaExpComando(AEscrevaExpComando node)
     {
-        inAEscrevaComando(node);
+        inAEscrevaExpComando(node);
         if(node.getPtVirg() != null)
         {
             node.getPtVirg().apply(this);
@@ -464,9 +464,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getFechaParentes().apply(this);
         }
-        if(node.getExpGlobal() != null)
+        if(node.getExp() != null)
         {
-            node.getExpGlobal().apply(this);
+            node.getExp().apply(this);
         }
         {
             List<PExpVirgula> copy = new ArrayList<PExpVirgula>(node.getExpVirgula());
@@ -484,7 +484,52 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getEscreva().apply(this);
         }
-        outAEscrevaComando(node);
+        outAEscrevaExpComando(node);
+    }
+
+    public void inAEscrevaExpLogicaComando(AEscrevaExpLogicaComando node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAEscrevaExpLogicaComando(AEscrevaExpLogicaComando node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAEscrevaExpLogicaComando(AEscrevaExpLogicaComando node)
+    {
+        inAEscrevaExpLogicaComando(node);
+        if(node.getPtVirg() != null)
+        {
+            node.getPtVirg().apply(this);
+        }
+        if(node.getFechaParentes() != null)
+        {
+            node.getFechaParentes().apply(this);
+        }
+        if(node.getExpLogica() != null)
+        {
+            node.getExpLogica().apply(this);
+        }
+        {
+            List<PExpLogicaVirgula> copy = new ArrayList<PExpLogicaVirgula>(node.getExpLogicaVirgula());
+            Collections.reverse(copy);
+            for(PExpLogicaVirgula e : copy)
+            {
+                e.apply(this);
+            }
+        }
+        if(node.getAbreParantes() != null)
+        {
+            node.getAbreParantes().apply(this);
+        }
+        if(node.getEscreva() != null)
+        {
+            node.getEscreva().apply(this);
+        }
+        outAEscrevaExpLogicaComando(node);
     }
 
     public void inASeComando(ASeComando node)
@@ -582,9 +627,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getFechaParentes().apply(this);
         }
-        if(node.getExpGlobal() != null)
+        if(node.getExp() != null)
         {
-            node.getExpGlobal().apply(this);
+            node.getExp().apply(this);
         }
         if(node.getAbreParantes() != null)
         {
@@ -782,11 +827,36 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getVirgula().apply(this);
         }
-        if(node.getExpGlobal() != null)
+        if(node.getExp() != null)
         {
-            node.getExpGlobal().apply(this);
+            node.getExp().apply(this);
         }
         outAExpVirgula(node);
+    }
+
+    public void inAExpLogicaVirgula(AExpLogicaVirgula node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpLogicaVirgula(AExpLogicaVirgula node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpLogicaVirgula(AExpLogicaVirgula node)
+    {
+        inAExpLogicaVirgula(node);
+        if(node.getVirgula() != null)
+        {
+            node.getVirgula().apply(this);
+        }
+        if(node.getExpLogica() != null)
+        {
+            node.getExpLogica().apply(this);
+        }
+        outAExpLogicaVirgula(node);
     }
 
     public void inAElseParte(AElseParte node)
@@ -955,45 +1025,45 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outANPara(node);
     }
 
-    public void inAMenosExpGlobalExpGlobal(AMenosExpGlobalExpGlobal node)
+    public void inAMenosExpExp(AMenosExpExp node)
     {
         defaultIn(node);
     }
 
-    public void outAMenosExpGlobalExpGlobal(AMenosExpGlobalExpGlobal node)
+    public void outAMenosExpExp(AMenosExpExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAMenosExpGlobalExpGlobal(AMenosExpGlobalExpGlobal node)
+    public void caseAMenosExpExp(AMenosExpExp node)
     {
-        inAMenosExpGlobalExpGlobal(node);
-        if(node.getExpGlobal() != null)
+        inAMenosExpExp(node);
+        if(node.getExp() != null)
         {
-            node.getExpGlobal().apply(this);
+            node.getExp().apply(this);
         }
         if(node.getMenos() != null)
         {
             node.getMenos().apply(this);
         }
-        outAMenosExpGlobalExpGlobal(node);
+        outAMenosExpExp(node);
     }
 
-    public void inASomaExpGlobal(ASomaExpGlobal node)
+    public void inASomaExp(ASomaExp node)
     {
         defaultIn(node);
     }
 
-    public void outASomaExpGlobal(ASomaExpGlobal node)
+    public void outASomaExp(ASomaExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASomaExpGlobal(ASomaExpGlobal node)
+    public void caseASomaExp(ASomaExp node)
     {
-        inASomaExpGlobal(node);
+        inASomaExp(node);
         {
             List<PSomaExpTermo> copy = new ArrayList<PSomaExpTermo>(node.getSomaExpTermo());
             Collections.reverse(copy);
@@ -1006,36 +1076,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getTermo().apply(this);
         }
-        outASomaExpGlobal(node);
-    }
-
-    public void inAExpLogicaExpGlobal(AExpLogicaExpGlobal node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAExpLogicaExpGlobal(AExpLogicaExpGlobal node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAExpLogicaExpGlobal(AExpLogicaExpGlobal node)
-    {
-        inAExpLogicaExpGlobal(node);
-        if(node.getFechaParentes() != null)
-        {
-            node.getFechaParentes().apply(this);
-        }
-        if(node.getExpLogica() != null)
-        {
-            node.getExpLogica().apply(this);
-        }
-        if(node.getAbreParantes() != null)
-        {
-            node.getAbreParantes().apply(this);
-        }
-        outAExpLogicaExpGlobal(node);
+        outASomaExp(node);
     }
 
     public void inAProdutoTermo(AProdutoTermo node)
@@ -1067,33 +1108,33 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAProdutoTermo(node);
     }
 
-    public void inAExpGlobalParentesFator(AExpGlobalParentesFator node)
+    public void inAExpParentesFator(AExpParentesFator node)
     {
         defaultIn(node);
     }
 
-    public void outAExpGlobalParentesFator(AExpGlobalParentesFator node)
+    public void outAExpParentesFator(AExpParentesFator node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExpGlobalParentesFator(AExpGlobalParentesFator node)
+    public void caseAExpParentesFator(AExpParentesFator node)
     {
-        inAExpGlobalParentesFator(node);
+        inAExpParentesFator(node);
         if(node.getFechaParentes() != null)
         {
             node.getFechaParentes().apply(this);
         }
-        if(node.getExpGlobal() != null)
+        if(node.getExp() != null)
         {
-            node.getExpGlobal().apply(this);
+            node.getExp().apply(this);
         }
         if(node.getAbreParantes() != null)
         {
             node.getAbreParantes().apply(this);
         }
-        outAExpGlobalParentesFator(node);
+        outAExpParentesFator(node);
     }
 
     public void inAVariavelFator(AVariavelFator node)
@@ -1522,20 +1563,66 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAExpNaoExpComparacao(node);
     }
 
-    public void inAExpNao(AExpNao node)
+    public void inANaoExpParentesExpNao(ANaoExpParentesExpNao node)
     {
         defaultIn(node);
     }
 
-    public void outAExpNao(AExpNao node)
+    public void outANaoExpParentesExpNao(ANaoExpParentesExpNao node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAExpNao(AExpNao node)
+    public void caseANaoExpParentesExpNao(ANaoExpParentesExpNao node)
     {
-        inAExpNao(node);
+        inANaoExpParentesExpNao(node);
+        if(node.getExpParentes() != null)
+        {
+            node.getExpParentes().apply(this);
+        }
+        if(node.getNao() != null)
+        {
+            node.getNao().apply(this);
+        }
+        outANaoExpParentesExpNao(node);
+    }
+
+    public void inAExpParentesExpNao(AExpParentesExpNao node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpParentesExpNao(AExpParentesExpNao node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpParentesExpNao(AExpParentesExpNao node)
+    {
+        inAExpParentesExpNao(node);
+        if(node.getExpParentes() != null)
+        {
+            node.getExpParentes().apply(this);
+        }
+        outAExpParentesExpNao(node);
+    }
+
+    public void inAExpParentes(AExpParentes node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpParentes(AExpParentes node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpParentes(AExpParentes node)
+    {
+        inAExpParentes(node);
         if(node.getFechaParentes() != null)
         {
             node.getFechaParentes().apply(this);
@@ -1548,11 +1635,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getAbreParantes().apply(this);
         }
-        if(node.getNao() != null)
-        {
-            node.getNao().apply(this);
-        }
-        outAExpNao(node);
+        outAExpParentes(node);
     }
 
     public void inAIgualIgualDiferente(AIgualIgualDiferente node)

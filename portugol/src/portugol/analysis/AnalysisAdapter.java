@@ -159,7 +159,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAEscrevaComando(AEscrevaComando node)
+    public void caseAEscrevaExpComando(AEscrevaExpComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEscrevaExpLogicaComando(AEscrevaExpLogicaComando node)
     {
         defaultCase(node);
     }
@@ -201,6 +207,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAExpLogicaVirgula(AExpLogicaVirgula node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseAElseParte(AElseParte node)
     {
         defaultCase(node);
@@ -237,19 +249,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAMenosExpGlobalExpGlobal(AMenosExpGlobalExpGlobal node)
+    public void caseAMenosExpExp(AMenosExpExp node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseASomaExpGlobal(ASomaExpGlobal node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpLogicaExpGlobal(AExpLogicaExpGlobal node)
+    public void caseASomaExp(ASomaExp node)
     {
         defaultCase(node);
     }
@@ -261,7 +267,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAExpGlobalParentesFator(AExpGlobalParentesFator node)
+    public void caseAExpParentesFator(AExpParentesFator node)
     {
         defaultCase(node);
     }
@@ -375,7 +381,19 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAExpNao(AExpNao node)
+    public void caseANaoExpParentesExpNao(ANaoExpParentesExpNao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpParentesExpNao(AExpParentesExpNao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpParentes(AExpParentes node)
     {
         defaultCase(node);
     }

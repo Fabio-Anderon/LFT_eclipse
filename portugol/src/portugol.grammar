@@ -146,17 +146,19 @@ variavel = {id}identificador | {vetor}identificador abre_colchete num_int fecha_
 valor = {string}string | {num_int}num_int | {num_real}num_real; 
 
 //Corpo de comando
-comando = {atribuicao} variavel atribuicao exp_global pt_virg
+comando = {atribuicao} variavel atribuicao exp pt_virg
 | {leia} leia abre_parantes decl_var* variavel fecha_parentes pt_virg
-| {escreva} escreva abre_parantes exp_virgula* exp_global fecha_parentes pt_virg
+| {escreva_exp} escreva abre_parantes exp_virgula* exp fecha_parentes pt_virg
+| {escreva_exp_logica} escreva abre_parantes exp_logica_virgula* exp_logica fecha_parentes pt_virg
 | {se} se abre_parantes exp_logica fecha_parentes entao comando+ else_parte? fim_se pt_virg
-| {avalie} avalie abre_parantes exp_global fecha_parentes caso_opcao* padrao? fim_avalie pt_virg
+| {avalie} avalie abre_parantes exp fecha_parentes caso_opcao* padrao? fim_avalie pt_virg
 | {enquanto} enquanto abre_parantes exp_logica fecha_parentes faca comando+ fim_enquanto pt_virg
 | {repita} repita comando+ ate abre_parantes exp_logica fecha_parentes pt_virg
 | {para} para variavel de i_para P.passo? ate n_para faca comando+ fim_para pt_virg;
 
 //Não terminais utilizados no corpo de comandos
-exp_virgula = exp_global virgula;      
+exp_virgula = exp virgula;  
+exp_logica_virgula = exp_logica virgula;    
 else_parte = senao comando+;
 caso_opcao = caso valor dois_pts comando+;   
 padrao  = senao dois_pts comando+;
@@ -165,11 +167,10 @@ i_para = num_int;
 n_para = num_int;
 
 //Expressões
-exp_global = {menos_exp_global} menos exp_global | 
-             {soma}termo soma_exp_termo* |
-             {exp_logica} abre_parantes exp_logica fecha_parentes;
+exp = {menos_exp} menos exp | 
+             {soma}termo soma_exp_termo*;
 termo = {produto}fator mult_fator* ;
-fator = {exp_global_parentes} abre_parantes exp_global fecha_parentes |  
+fator = {exp_parentes} abre_parantes exp fecha_parentes |  
         {variavel}variavel | 
         {valor}valor;
 
@@ -184,9 +185,10 @@ mult_fator = mult fator;
 exp_logica = {xor}exp_logica xor exp_ou | {exp_ou}exp_ou;
 exp_ou = {ou}exp_ou ou exp_e | {exp_e} exp_e;
 exp_e =  {e} exp_e e exp_igual | {exp_igual} exp_igual;
-exp_igual = [esquerda]: exp_global igual_diferente [direita]: exp_global | {exp_comparacao} exp_comparacao;
-exp_comparacao = [esquerda]: exp_global op_comparar [direita]: exp_global | {exp_nao} exp_nao;
-exp_nao = nao abre_parantes exp_logica fecha_parentes;
+exp_igual = [esquerda]: exp igual_diferente [direita]: exp | {exp_comparacao} exp_comparacao;
+exp_comparacao = [esquerda]: exp op_comparar [direita]: exp | {exp_nao} exp_nao;
+exp_nao = {nao_exp_parentes}nao exp_parentes | {exp_parentes}exp_parentes;
+exp_parentes = abre_parantes exp_logica fecha_parentes;
 
 igual_diferente = {igual} igual | {diferente} diferente;
 op_comparar = {maior}maior | 
@@ -224,12 +226,12 @@ exp-logica: exp '=' exp
 
 
   // ===== tentativa 3
-exp_global = ex_comparacao opex_comparacao*;
+exp = ex_comparacao opex_comparacao*;
 ex_comparacao = ex_xor opex_xor*;
 ex_xor = ex_ou_soma opex_ou_soma*;
 ex_ou_soma = ex_e_mult opex_e_mult*;
 ex_e_mult = ex_nao opex_nao*;
-exp_caso_base = {exp_global_parentes}abre_parantes exp_global fecha_parentes | 
+exp_caso_base = {exp_parentes}abre_parantes exp fecha_parentes | 
                   {variavel}variavel  |
                   {valor}valor;
 
