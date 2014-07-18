@@ -185,7 +185,10 @@ mult_fator = mult fator;
 exp_logica = {xor}exp_logica xor exp_ou | {exp_ou}exp_ou;
 exp_ou = {ou}exp_ou ou exp_e | {exp_e} exp_e;
 exp_e =  {e} exp_e e exp_igual | {exp_igual} exp_igual;
-exp_igual = [esquerda]: exp igual_diferente [direita]: exp | {exp_comparacao} exp_comparacao;
+//Permite (a==b) = (b==c) || a = b; Mas não permite a == b == c
+exp_igual = [esquerda]: exp igual_diferente [direita]: exp | {exp_mult_igual} exp_mult_igual | {exp_comparacao} exp_comparacao;
+exp_mult_igual = [esquerda]: exp_parentes igual_diferente [direita]: exp_parentes;
+
 exp_comparacao = [esquerda]: exp op_comparar [direita]: exp | {exp_nao} exp_nao;
 exp_nao = {nao_exp_parentes}nao exp_parentes | {exp_parentes}exp_parentes;
 exp_parentes = abre_parantes exp_logica fecha_parentes;

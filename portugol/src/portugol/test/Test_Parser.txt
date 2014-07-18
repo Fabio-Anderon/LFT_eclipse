@@ -7,11 +7,18 @@ num2 <- 2;
 soma <- num1+num2;
 mult <- num1*num2;
 
+// NÃ£o permite se(num1 == num2 == soma)entao
+
+//Permite somente este tipo de cadeia de op logico
+se((num1 = num2) = (soma = mult))entao
+escreva('OK');
+fim se;
+
 //se
 se(soma<mult)entao	
-escreva('A SOMA É MENOR');
+escreva('A SOMA ï¿½ MENOR');
 senao
-escreva('O PRODUTO É MENOR OU IGUAL');
+escreva('O PRODUTO ï¿½ MENOR OU IGUAL');
 fim se;
 
 //avalie

@@ -17,7 +17,10 @@ public class test_parser {
 		File f = new File("/home/fabio/git/LFT_eclipse/portugol/src/portugol/test/Test_Parser.txt");
 		Parser gramatica = new Parser(new New_Lexer(new PushbackReader(new FileReader(f))));
 		
-		gramatica.parse().getPPrograma();
+		System.out.println(gramatica.parse().getPPrograma());
+		
+		
+		
 		
 	}
 
