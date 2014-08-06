@@ -167,6 +167,20 @@ i_para = num_int;
 n_para = num_int;
 
 //Expressões
+exp = {soma}exp soma termo|
+      {termo}termo;
+termo = {mult} termo mult fator|
+      {fator}fator;
+fator = {exp_parentes}abre_parantes exp fecha_parentes|
+      {menos_exp} menos fator|
+      {variavel}variavel|
+      {valor}valor; 
+      
+soma = {mais}mais | {menos}menos;
+mult = {produto}produto | {divisao}divisao;
+
+/*
+//Expressões
 exp = {menos_exp} menos exp | 
              {soma}termo soma_exp_termo*;
 termo = {produto}fator mult_fator* ;
@@ -179,7 +193,7 @@ mult = {produto}produto | {divisao}divisao;
 
 soma_exp_termo = soma termo;
 mult_fator = mult fator;
-
+*/
 
 //Menor Precedência
 exp_logica = {xor}exp_logica xor exp_ou | {exp_ou}exp_ou;
