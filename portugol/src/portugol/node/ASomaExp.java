@@ -2,14 +2,13 @@
 
 package portugol.node;
 
-import java.util.*;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
 public final class ASomaExp extends PExp
 {
-    private PTermo _termo_;
-    private final LinkedList<PSomaExpTermo> _somaExpTermo_ = new LinkedList<PSomaExpTermo>();
+    private PExp _l_;
+    private PExp _r_;
 
     public ASomaExp()
     {
@@ -17,13 +16,13 @@ public final class ASomaExp extends PExp
     }
 
     public ASomaExp(
-        @SuppressWarnings("hiding") PTermo _termo_,
-        @SuppressWarnings("hiding") List<?> _somaExpTermo_)
+        @SuppressWarnings("hiding") PExp _l_,
+        @SuppressWarnings("hiding") PExp _r_)
     {
         // Constructor
-        setTermo(_termo_);
+        setL(_l_);
 
-        setSomaExpTermo(_somaExpTermo_);
+        setR(_r_);
 
     }
 
@@ -31,8 +30,8 @@ public final class ASomaExp extends PExp
     public Object clone()
     {
         return new ASomaExp(
-            cloneNode(this._termo_),
-            cloneList(this._somaExpTermo_));
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
@@ -41,16 +40,16 @@ public final class ASomaExp extends PExp
         ((Analysis) sw).caseASomaExp(this);
     }
 
-    public PTermo getTermo()
+    public PExp getL()
     {
-        return this._termo_;
+        return this._l_;
     }
 
-    public void setTermo(PTermo node)
+    public void setL(PExp node)
     {
-        if(this._termo_ != null)
+        if(this._l_ != null)
         {
-            this._termo_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -63,55 +62,55 @@ public final class ASomaExp extends PExp
             node.parent(this);
         }
 
-        this._termo_ = node;
+        this._l_ = node;
     }
 
-    public LinkedList<PSomaExpTermo> getSomaExpTermo()
+    public PExp getR()
     {
-        return this._somaExpTermo_;
+        return this._r_;
     }
 
-    public void setSomaExpTermo(List<?> list)
+    public void setR(PExp node)
     {
-        for(PSomaExpTermo e : this._somaExpTermo_)
+        if(this._r_ != null)
         {
-            e.parent(null);
+            this._r_.parent(null);
         }
-        this._somaExpTermo_.clear();
 
-        for(Object obj_e : list)
+        if(node != null)
         {
-            PSomaExpTermo e = (PSomaExpTermo) obj_e;
-            if(e.parent() != null)
+            if(node.parent() != null)
             {
-                e.parent().removeChild(e);
+                node.parent().removeChild(node);
             }
 
-            e.parent(this);
-            this._somaExpTermo_.add(e);
+            node.parent(this);
         }
+
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._termo_)
-            + toString(this._somaExpTermo_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._termo_ == child)
+        if(this._l_ == child)
         {
-            this._termo_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._somaExpTermo_.remove(child))
+        if(this._r_ == child)
         {
+            this._r_ = null;
             return;
         }
 
@@ -122,28 +121,16 @@ public final class ASomaExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._termo_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setTermo((PTermo) newChild);
+            setL((PExp) newChild);
             return;
         }
 
-        for(ListIterator<PSomaExpTermo> i = this._somaExpTermo_.listIterator(); i.hasNext();)
+        if(this._r_ == oldChild)
         {
-            if(i.next() == oldChild)
-            {
-                if(newChild != null)
-                {
-                    i.set((PSomaExpTermo) newChild);
-                    newChild.parent(this);
-                    oldChild.parent(null);
-                    return;
-                }
-
-                i.remove();
-                oldChild.parent(null);
-                return;
-            }
+            setR((PExp) newChild);
+            return;
         }
 
         throw new RuntimeException("Not a child.");

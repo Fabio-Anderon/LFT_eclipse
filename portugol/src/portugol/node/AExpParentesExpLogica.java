@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpComparacaoExpIgual extends PExpIgual
+public final class AExpParentesExpLogica extends PExpLogica
 {
-    private PExpComparacao _expComparacao_;
+    private PExpLogica _expLogica_;
 
-    public AExpComparacaoExpIgual()
+    public AExpParentesExpLogica()
     {
         // Constructor
     }
 
-    public AExpComparacaoExpIgual(
-        @SuppressWarnings("hiding") PExpComparacao _expComparacao_)
+    public AExpParentesExpLogica(
+        @SuppressWarnings("hiding") PExpLogica _expLogica_)
     {
         // Constructor
-        setExpComparacao(_expComparacao_);
+        setExpLogica(_expLogica_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpComparacaoExpIgual(
-            cloneNode(this._expComparacao_));
+        return new AExpParentesExpLogica(
+            cloneNode(this._expLogica_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpComparacaoExpIgual(this);
+        ((Analysis) sw).caseAExpParentesExpLogica(this);
     }
 
-    public PExpComparacao getExpComparacao()
+    public PExpLogica getExpLogica()
     {
-        return this._expComparacao_;
+        return this._expLogica_;
     }
 
-    public void setExpComparacao(PExpComparacao node)
+    public void setExpLogica(PExpLogica node)
     {
-        if(this._expComparacao_ != null)
+        if(this._expLogica_ != null)
         {
-            this._expComparacao_.parent(null);
+            this._expLogica_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpComparacaoExpIgual extends PExpIgual
             node.parent(this);
         }
 
-        this._expComparacao_ = node;
+        this._expLogica_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expComparacao_);
+            + toString(this._expLogica_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expComparacao_ == child)
+        if(this._expLogica_ == child)
         {
-            this._expComparacao_ = null;
+            this._expLogica_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpComparacaoExpIgual extends PExpIgual
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expComparacao_ == oldChild)
+        if(this._expLogica_ == oldChild)
         {
-            setExpComparacao((PExpComparacao) newChild);
+            setExpLogica((PExpLogica) newChild);
             return;
         }
 

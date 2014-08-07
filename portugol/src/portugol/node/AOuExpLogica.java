@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASomaExpTermo extends PSomaExpTermo
+public final class AOuExpLogica extends PExpLogica
 {
-    private PSoma _soma_;
-    private PTermo _termo_;
+    private PExpLogica _l_;
+    private PExpLogica _r_;
 
-    public ASomaExpTermo()
+    public AOuExpLogica()
     {
         // Constructor
     }
 
-    public ASomaExpTermo(
-        @SuppressWarnings("hiding") PSoma _soma_,
-        @SuppressWarnings("hiding") PTermo _termo_)
+    public AOuExpLogica(
+        @SuppressWarnings("hiding") PExpLogica _l_,
+        @SuppressWarnings("hiding") PExpLogica _r_)
     {
         // Constructor
-        setSoma(_soma_);
+        setL(_l_);
 
-        setTermo(_termo_);
+        setR(_r_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ASomaExpTermo(
-            cloneNode(this._soma_),
-            cloneNode(this._termo_));
+        return new AOuExpLogica(
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASomaExpTermo(this);
+        ((Analysis) sw).caseAOuExpLogica(this);
     }
 
-    public PSoma getSoma()
+    public PExpLogica getL()
     {
-        return this._soma_;
+        return this._l_;
     }
 
-    public void setSoma(PSoma node)
+    public void setL(PExpLogica node)
     {
-        if(this._soma_ != null)
+        if(this._l_ != null)
         {
-            this._soma_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ASomaExpTermo extends PSomaExpTermo
             node.parent(this);
         }
 
-        this._soma_ = node;
+        this._l_ = node;
     }
 
-    public PTermo getTermo()
+    public PExpLogica getR()
     {
-        return this._termo_;
+        return this._r_;
     }
 
-    public void setTermo(PTermo node)
+    public void setR(PExpLogica node)
     {
-        if(this._termo_ != null)
+        if(this._r_ != null)
         {
-            this._termo_.parent(null);
+            this._r_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ASomaExpTermo extends PSomaExpTermo
             node.parent(this);
         }
 
-        this._termo_ = node;
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._soma_)
-            + toString(this._termo_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._soma_ == child)
+        if(this._l_ == child)
         {
-            this._soma_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._termo_ == child)
+        if(this._r_ == child)
         {
-            this._termo_ = null;
+            this._r_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ASomaExpTermo extends PSomaExpTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._soma_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setSoma((PSoma) newChild);
+            setL((PExpLogica) newChild);
             return;
         }
 
-        if(this._termo_ == oldChild)
+        if(this._r_ == oldChild)
         {
-            setTermo((PTermo) newChild);
+            setR((PExpLogica) newChild);
             return;
         }
 

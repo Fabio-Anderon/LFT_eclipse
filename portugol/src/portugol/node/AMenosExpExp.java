@@ -7,7 +7,6 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AMenosExpExp extends PExp
 {
-    private TMenos _menos_;
     private PExp _exp_;
 
     public AMenosExpExp()
@@ -16,12 +15,9 @@ public final class AMenosExpExp extends PExp
     }
 
     public AMenosExpExp(
-        @SuppressWarnings("hiding") TMenos _menos_,
         @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
-        setMenos(_menos_);
-
         setExp(_exp_);
 
     }
@@ -30,7 +26,6 @@ public final class AMenosExpExp extends PExp
     public Object clone()
     {
         return new AMenosExpExp(
-            cloneNode(this._menos_),
             cloneNode(this._exp_));
     }
 
@@ -38,31 +33,6 @@ public final class AMenosExpExp extends PExp
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAMenosExpExp(this);
-    }
-
-    public TMenos getMenos()
-    {
-        return this._menos_;
-    }
-
-    public void setMenos(TMenos node)
-    {
-        if(this._menos_ != null)
-        {
-            this._menos_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._menos_ = node;
     }
 
     public PExp getExp()
@@ -94,7 +64,6 @@ public final class AMenosExpExp extends PExp
     public String toString()
     {
         return ""
-            + toString(this._menos_)
             + toString(this._exp_);
     }
 
@@ -102,12 +71,6 @@ public final class AMenosExpExp extends PExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._menos_ == child)
-        {
-            this._menos_ = null;
-            return;
-        }
-
         if(this._exp_ == child)
         {
             this._exp_ = null;
@@ -121,12 +84,6 @@ public final class AMenosExpExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._menos_ == oldChild)
-        {
-            setMenos((TMenos) newChild);
-            return;
-        }
-
         if(this._exp_ == oldChild)
         {
             setExp((PExp) newChild);

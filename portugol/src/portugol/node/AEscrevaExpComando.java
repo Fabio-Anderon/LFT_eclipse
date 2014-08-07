@@ -8,12 +8,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AEscrevaExpComando extends PComando
 {
-    private TEscreva _escreva_;
-    private TAbreParantes _abreParantes_;
-    private final LinkedList<PExpVirgula> _expVirgula_ = new LinkedList<PExpVirgula>();
-    private PExp _exp_;
-    private TFechaParentes _fechaParentes_;
-    private TPtVirg _ptVirg_;
+    private final LinkedList<PExp> _exp_ = new LinkedList<PExp>();
 
     public AEscrevaExpComando()
     {
@@ -21,25 +16,10 @@ public final class AEscrevaExpComando extends PComando
     }
 
     public AEscrevaExpComando(
-        @SuppressWarnings("hiding") TEscreva _escreva_,
-        @SuppressWarnings("hiding") TAbreParantes _abreParantes_,
-        @SuppressWarnings("hiding") List<?> _expVirgula_,
-        @SuppressWarnings("hiding") PExp _exp_,
-        @SuppressWarnings("hiding") TFechaParentes _fechaParentes_,
-        @SuppressWarnings("hiding") TPtVirg _ptVirg_)
+        @SuppressWarnings("hiding") List<?> _exp_)
     {
         // Constructor
-        setEscreva(_escreva_);
-
-        setAbreParantes(_abreParantes_);
-
-        setExpVirgula(_expVirgula_);
-
         setExp(_exp_);
-
-        setFechaParentes(_fechaParentes_);
-
-        setPtVirg(_ptVirg_);
 
     }
 
@@ -47,12 +27,7 @@ public final class AEscrevaExpComando extends PComando
     public Object clone()
     {
         return new AEscrevaExpComando(
-            cloneNode(this._escreva_),
-            cloneNode(this._abreParantes_),
-            cloneList(this._expVirgula_),
-            cloneNode(this._exp_),
-            cloneNode(this._fechaParentes_),
-            cloneNode(this._ptVirg_));
+            cloneList(this._exp_));
     }
 
     @Override
@@ -61,205 +36,45 @@ public final class AEscrevaExpComando extends PComando
         ((Analysis) sw).caseAEscrevaExpComando(this);
     }
 
-    public TEscreva getEscreva()
+    public LinkedList<PExp> getExp()
     {
-        return this._escreva_;
+        return this._exp_;
     }
 
-    public void setEscreva(TEscreva node)
+    public void setExp(List<?> list)
     {
-        if(this._escreva_ != null)
-        {
-            this._escreva_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._escreva_ = node;
-    }
-
-    public TAbreParantes getAbreParantes()
-    {
-        return this._abreParantes_;
-    }
-
-    public void setAbreParantes(TAbreParantes node)
-    {
-        if(this._abreParantes_ != null)
-        {
-            this._abreParantes_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._abreParantes_ = node;
-    }
-
-    public LinkedList<PExpVirgula> getExpVirgula()
-    {
-        return this._expVirgula_;
-    }
-
-    public void setExpVirgula(List<?> list)
-    {
-        for(PExpVirgula e : this._expVirgula_)
+        for(PExp e : this._exp_)
         {
             e.parent(null);
         }
-        this._expVirgula_.clear();
+        this._exp_.clear();
 
         for(Object obj_e : list)
         {
-            PExpVirgula e = (PExpVirgula) obj_e;
+            PExp e = (PExp) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._expVirgula_.add(e);
+            this._exp_.add(e);
         }
-    }
-
-    public PExp getExp()
-    {
-        return this._exp_;
-    }
-
-    public void setExp(PExp node)
-    {
-        if(this._exp_ != null)
-        {
-            this._exp_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp_ = node;
-    }
-
-    public TFechaParentes getFechaParentes()
-    {
-        return this._fechaParentes_;
-    }
-
-    public void setFechaParentes(TFechaParentes node)
-    {
-        if(this._fechaParentes_ != null)
-        {
-            this._fechaParentes_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._fechaParentes_ = node;
-    }
-
-    public TPtVirg getPtVirg()
-    {
-        return this._ptVirg_;
-    }
-
-    public void setPtVirg(TPtVirg node)
-    {
-        if(this._ptVirg_ != null)
-        {
-            this._ptVirg_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._ptVirg_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._escreva_)
-            + toString(this._abreParantes_)
-            + toString(this._expVirgula_)
-            + toString(this._exp_)
-            + toString(this._fechaParentes_)
-            + toString(this._ptVirg_);
+            + toString(this._exp_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._escreva_ == child)
+        if(this._exp_.remove(child))
         {
-            this._escreva_ = null;
-            return;
-        }
-
-        if(this._abreParantes_ == child)
-        {
-            this._abreParantes_ = null;
-            return;
-        }
-
-        if(this._expVirgula_.remove(child))
-        {
-            return;
-        }
-
-        if(this._exp_ == child)
-        {
-            this._exp_ = null;
-            return;
-        }
-
-        if(this._fechaParentes_ == child)
-        {
-            this._fechaParentes_ = null;
-            return;
-        }
-
-        if(this._ptVirg_ == child)
-        {
-            this._ptVirg_ = null;
             return;
         }
 
@@ -270,25 +85,13 @@ public final class AEscrevaExpComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._escreva_ == oldChild)
-        {
-            setEscreva((TEscreva) newChild);
-            return;
-        }
-
-        if(this._abreParantes_ == oldChild)
-        {
-            setAbreParantes((TAbreParantes) newChild);
-            return;
-        }
-
-        for(ListIterator<PExpVirgula> i = this._expVirgula_.listIterator(); i.hasNext();)
+        for(ListIterator<PExp> i = this._exp_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PExpVirgula) newChild);
+                    i.set((PExp) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
@@ -298,24 +101,6 @@ public final class AEscrevaExpComando extends PComando
                 oldChild.parent(null);
                 return;
             }
-        }
-
-        if(this._exp_ == oldChild)
-        {
-            setExp((PExp) newChild);
-            return;
-        }
-
-        if(this._fechaParentes_ == oldChild)
-        {
-            setFechaParentes((TFechaParentes) newChild);
-            return;
-        }
-
-        if(this._ptVirg_ == oldChild)
-        {
-            setPtVirg((TPtVirg) newChild);
-            return;
         }
 
         throw new RuntimeException("Not a child.");

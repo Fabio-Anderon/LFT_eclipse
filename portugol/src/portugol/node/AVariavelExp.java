@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpIgualExpE extends PExpE
+public final class AVariavelExp extends PExp
 {
-    private PExpIgual _expIgual_;
+    private PVariavel _variavel_;
 
-    public AExpIgualExpE()
+    public AVariavelExp()
     {
         // Constructor
     }
 
-    public AExpIgualExpE(
-        @SuppressWarnings("hiding") PExpIgual _expIgual_)
+    public AVariavelExp(
+        @SuppressWarnings("hiding") PVariavel _variavel_)
     {
         // Constructor
-        setExpIgual(_expIgual_);
+        setVariavel(_variavel_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpIgualExpE(
-            cloneNode(this._expIgual_));
+        return new AVariavelExp(
+            cloneNode(this._variavel_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpIgualExpE(this);
+        ((Analysis) sw).caseAVariavelExp(this);
     }
 
-    public PExpIgual getExpIgual()
+    public PVariavel getVariavel()
     {
-        return this._expIgual_;
+        return this._variavel_;
     }
 
-    public void setExpIgual(PExpIgual node)
+    public void setVariavel(PVariavel node)
     {
-        if(this._expIgual_ != null)
+        if(this._variavel_ != null)
         {
-            this._expIgual_.parent(null);
+            this._variavel_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AExpIgualExpE extends PExpE
             node.parent(this);
         }
 
-        this._expIgual_ = node;
+        this._variavel_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expIgual_);
+            + toString(this._variavel_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expIgual_ == child)
+        if(this._variavel_ == child)
         {
-            this._expIgual_ = null;
+            this._variavel_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AExpIgualExpE extends PExpE
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expIgual_ == oldChild)
+        if(this._variavel_ == oldChild)
         {
-            setExpIgual((PExpIgual) newChild);
+            setVariavel((PVariavel) newChild);
             return;
         }
 

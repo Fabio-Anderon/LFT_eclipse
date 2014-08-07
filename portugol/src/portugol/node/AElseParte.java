@@ -8,7 +8,6 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class AElseParte extends PElseParte
 {
-    private TSenao _senao_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public AElseParte()
@@ -17,12 +16,9 @@ public final class AElseParte extends PElseParte
     }
 
     public AElseParte(
-        @SuppressWarnings("hiding") TSenao _senao_,
         @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
-        setSenao(_senao_);
-
         setComando(_comando_);
 
     }
@@ -31,7 +27,6 @@ public final class AElseParte extends PElseParte
     public Object clone()
     {
         return new AElseParte(
-            cloneNode(this._senao_),
             cloneList(this._comando_));
     }
 
@@ -39,31 +34,6 @@ public final class AElseParte extends PElseParte
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAElseParte(this);
-    }
-
-    public TSenao getSenao()
-    {
-        return this._senao_;
-    }
-
-    public void setSenao(TSenao node)
-    {
-        if(this._senao_ != null)
-        {
-            this._senao_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._senao_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -96,7 +66,6 @@ public final class AElseParte extends PElseParte
     public String toString()
     {
         return ""
-            + toString(this._senao_)
             + toString(this._comando_);
     }
 
@@ -104,12 +73,6 @@ public final class AElseParte extends PElseParte
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._senao_ == child)
-        {
-            this._senao_ = null;
-            return;
-        }
-
         if(this._comando_.remove(child))
         {
             return;
@@ -122,12 +85,6 @@ public final class AElseParte extends PElseParte
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._senao_ == oldChild)
-        {
-            setSenao((TSenao) newChild);
-            return;
-        }
-
         for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

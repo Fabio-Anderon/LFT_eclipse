@@ -8,15 +8,9 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class ASeComando extends PComando
 {
-    private TSe _se_;
-    private TAbreParantes _abreParantes_;
     private PExpLogica _expLogica_;
-    private TFechaParentes _fechaParentes_;
-    private TEntao _entao_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
     private PElseParte _elseParte_;
-    private TFimSe _fimSe_;
-    private TPtVirg _ptVirg_;
 
     public ASeComando()
     {
@@ -24,34 +18,16 @@ public final class ASeComando extends PComando
     }
 
     public ASeComando(
-        @SuppressWarnings("hiding") TSe _se_,
-        @SuppressWarnings("hiding") TAbreParantes _abreParantes_,
         @SuppressWarnings("hiding") PExpLogica _expLogica_,
-        @SuppressWarnings("hiding") TFechaParentes _fechaParentes_,
-        @SuppressWarnings("hiding") TEntao _entao_,
         @SuppressWarnings("hiding") List<?> _comando_,
-        @SuppressWarnings("hiding") PElseParte _elseParte_,
-        @SuppressWarnings("hiding") TFimSe _fimSe_,
-        @SuppressWarnings("hiding") TPtVirg _ptVirg_)
+        @SuppressWarnings("hiding") PElseParte _elseParte_)
     {
         // Constructor
-        setSe(_se_);
-
-        setAbreParantes(_abreParantes_);
-
         setExpLogica(_expLogica_);
-
-        setFechaParentes(_fechaParentes_);
-
-        setEntao(_entao_);
 
         setComando(_comando_);
 
         setElseParte(_elseParte_);
-
-        setFimSe(_fimSe_);
-
-        setPtVirg(_ptVirg_);
 
     }
 
@@ -59,71 +35,15 @@ public final class ASeComando extends PComando
     public Object clone()
     {
         return new ASeComando(
-            cloneNode(this._se_),
-            cloneNode(this._abreParantes_),
             cloneNode(this._expLogica_),
-            cloneNode(this._fechaParentes_),
-            cloneNode(this._entao_),
             cloneList(this._comando_),
-            cloneNode(this._elseParte_),
-            cloneNode(this._fimSe_),
-            cloneNode(this._ptVirg_));
+            cloneNode(this._elseParte_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseASeComando(this);
-    }
-
-    public TSe getSe()
-    {
-        return this._se_;
-    }
-
-    public void setSe(TSe node)
-    {
-        if(this._se_ != null)
-        {
-            this._se_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._se_ = node;
-    }
-
-    public TAbreParantes getAbreParantes()
-    {
-        return this._abreParantes_;
-    }
-
-    public void setAbreParantes(TAbreParantes node)
-    {
-        if(this._abreParantes_ != null)
-        {
-            this._abreParantes_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._abreParantes_ = node;
     }
 
     public PExpLogica getExpLogica()
@@ -149,56 +69,6 @@ public final class ASeComando extends PComando
         }
 
         this._expLogica_ = node;
-    }
-
-    public TFechaParentes getFechaParentes()
-    {
-        return this._fechaParentes_;
-    }
-
-    public void setFechaParentes(TFechaParentes node)
-    {
-        if(this._fechaParentes_ != null)
-        {
-            this._fechaParentes_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._fechaParentes_ = node;
-    }
-
-    public TEntao getEntao()
-    {
-        return this._entao_;
-    }
-
-    public void setEntao(TEntao node)
-    {
-        if(this._entao_ != null)
-        {
-            this._entao_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._entao_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -252,102 +122,22 @@ public final class ASeComando extends PComando
         this._elseParte_ = node;
     }
 
-    public TFimSe getFimSe()
-    {
-        return this._fimSe_;
-    }
-
-    public void setFimSe(TFimSe node)
-    {
-        if(this._fimSe_ != null)
-        {
-            this._fimSe_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._fimSe_ = node;
-    }
-
-    public TPtVirg getPtVirg()
-    {
-        return this._ptVirg_;
-    }
-
-    public void setPtVirg(TPtVirg node)
-    {
-        if(this._ptVirg_ != null)
-        {
-            this._ptVirg_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._ptVirg_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._se_)
-            + toString(this._abreParantes_)
             + toString(this._expLogica_)
-            + toString(this._fechaParentes_)
-            + toString(this._entao_)
             + toString(this._comando_)
-            + toString(this._elseParte_)
-            + toString(this._fimSe_)
-            + toString(this._ptVirg_);
+            + toString(this._elseParte_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._se_ == child)
-        {
-            this._se_ = null;
-            return;
-        }
-
-        if(this._abreParantes_ == child)
-        {
-            this._abreParantes_ = null;
-            return;
-        }
-
         if(this._expLogica_ == child)
         {
             this._expLogica_ = null;
-            return;
-        }
-
-        if(this._fechaParentes_ == child)
-        {
-            this._fechaParentes_ = null;
-            return;
-        }
-
-        if(this._entao_ == child)
-        {
-            this._entao_ = null;
             return;
         }
 
@@ -362,18 +152,6 @@ public final class ASeComando extends PComando
             return;
         }
 
-        if(this._fimSe_ == child)
-        {
-            this._fimSe_ = null;
-            return;
-        }
-
-        if(this._ptVirg_ == child)
-        {
-            this._ptVirg_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -381,33 +159,9 @@ public final class ASeComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._se_ == oldChild)
-        {
-            setSe((TSe) newChild);
-            return;
-        }
-
-        if(this._abreParantes_ == oldChild)
-        {
-            setAbreParantes((TAbreParantes) newChild);
-            return;
-        }
-
         if(this._expLogica_ == oldChild)
         {
             setExpLogica((PExpLogica) newChild);
-            return;
-        }
-
-        if(this._fechaParentes_ == oldChild)
-        {
-            setFechaParentes((TFechaParentes) newChild);
-            return;
-        }
-
-        if(this._entao_ == oldChild)
-        {
-            setEntao((TEntao) newChild);
             return;
         }
 
@@ -432,18 +186,6 @@ public final class ASeComando extends PComando
         if(this._elseParte_ == oldChild)
         {
             setElseParte((PElseParte) newChild);
-            return;
-        }
-
-        if(this._fimSe_ == oldChild)
-        {
-            setFimSe((TFimSe) newChild);
-            return;
-        }
-
-        if(this._ptVirg_ == oldChild)
-        {
-            setPtVirg((TPtVirg) newChild);
             return;
         }
 

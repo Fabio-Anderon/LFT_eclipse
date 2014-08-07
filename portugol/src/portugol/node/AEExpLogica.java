@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpLogicaVirgula extends PExpLogicaVirgula
+public final class AEExpLogica extends PExpLogica
 {
-    private PExpLogica _expLogica_;
-    private TVirgula _virgula_;
+    private PExpLogica _l_;
+    private PExpLogica _r_;
 
-    public AExpLogicaVirgula()
+    public AEExpLogica()
     {
         // Constructor
     }
 
-    public AExpLogicaVirgula(
-        @SuppressWarnings("hiding") PExpLogica _expLogica_,
-        @SuppressWarnings("hiding") TVirgula _virgula_)
+    public AEExpLogica(
+        @SuppressWarnings("hiding") PExpLogica _l_,
+        @SuppressWarnings("hiding") PExpLogica _r_)
     {
         // Constructor
-        setExpLogica(_expLogica_);
+        setL(_l_);
 
-        setVirgula(_virgula_);
+        setR(_r_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpLogicaVirgula(
-            cloneNode(this._expLogica_),
-            cloneNode(this._virgula_));
+        return new AEExpLogica(
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpLogicaVirgula(this);
+        ((Analysis) sw).caseAEExpLogica(this);
     }
 
-    public PExpLogica getExpLogica()
+    public PExpLogica getL()
     {
-        return this._expLogica_;
+        return this._l_;
     }
 
-    public void setExpLogica(PExpLogica node)
+    public void setL(PExpLogica node)
     {
-        if(this._expLogica_ != null)
+        if(this._l_ != null)
         {
-            this._expLogica_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class AExpLogicaVirgula extends PExpLogicaVirgula
             node.parent(this);
         }
 
-        this._expLogica_ = node;
+        this._l_ = node;
     }
 
-    public TVirgula getVirgula()
+    public PExpLogica getR()
     {
-        return this._virgula_;
+        return this._r_;
     }
 
-    public void setVirgula(TVirgula node)
+    public void setR(PExpLogica node)
     {
-        if(this._virgula_ != null)
+        if(this._r_ != null)
         {
-            this._virgula_.parent(null);
+            this._r_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class AExpLogicaVirgula extends PExpLogicaVirgula
             node.parent(this);
         }
 
-        this._virgula_ = node;
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._expLogica_)
-            + toString(this._virgula_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._expLogica_ == child)
+        if(this._l_ == child)
         {
-            this._expLogica_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._virgula_ == child)
+        if(this._r_ == child)
         {
-            this._virgula_ = null;
+            this._r_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class AExpLogicaVirgula extends PExpLogicaVirgula
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._expLogica_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setExpLogica((PExpLogica) newChild);
+            setL((PExpLogica) newChild);
             return;
         }
 
-        if(this._virgula_ == oldChild)
+        if(this._r_ == oldChild)
         {
-            setVirgula((TVirgula) newChild);
+            setR((PExpLogica) newChild);
             return;
         }
 

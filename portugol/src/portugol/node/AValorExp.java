@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AIgualIgualDiferente extends PIgualDiferente
+public final class AValorExp extends PExp
 {
-    private TIgual _igual_;
+    private PValor _valor_;
 
-    public AIgualIgualDiferente()
+    public AValorExp()
     {
         // Constructor
     }
 
-    public AIgualIgualDiferente(
-        @SuppressWarnings("hiding") TIgual _igual_)
+    public AValorExp(
+        @SuppressWarnings("hiding") PValor _valor_)
     {
         // Constructor
-        setIgual(_igual_);
+        setValor(_valor_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AIgualIgualDiferente(
-            cloneNode(this._igual_));
+        return new AValorExp(
+            cloneNode(this._valor_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAIgualIgualDiferente(this);
+        ((Analysis) sw).caseAValorExp(this);
     }
 
-    public TIgual getIgual()
+    public PValor getValor()
     {
-        return this._igual_;
+        return this._valor_;
     }
 
-    public void setIgual(TIgual node)
+    public void setValor(PValor node)
     {
-        if(this._igual_ != null)
+        if(this._valor_ != null)
         {
-            this._igual_.parent(null);
+            this._valor_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AIgualIgualDiferente extends PIgualDiferente
             node.parent(this);
         }
 
-        this._igual_ = node;
+        this._valor_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._igual_);
+            + toString(this._valor_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._igual_ == child)
+        if(this._valor_ == child)
         {
-            this._igual_ = null;
+            this._valor_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AIgualIgualDiferente extends PIgualDiferente
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._igual_ == oldChild)
+        if(this._valor_ == oldChild)
         {
-            setIgual((TIgual) newChild);
+            setValor((PValor) newChild);
             return;
         }
 

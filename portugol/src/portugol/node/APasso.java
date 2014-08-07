@@ -7,7 +7,6 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class APasso extends PPasso
 {
-    private TPasso _passo_;
     private TNumInt _numInt_;
 
     public APasso()
@@ -16,12 +15,9 @@ public final class APasso extends PPasso
     }
 
     public APasso(
-        @SuppressWarnings("hiding") TPasso _passo_,
         @SuppressWarnings("hiding") TNumInt _numInt_)
     {
         // Constructor
-        setPasso(_passo_);
-
         setNumInt(_numInt_);
 
     }
@@ -30,7 +26,6 @@ public final class APasso extends PPasso
     public Object clone()
     {
         return new APasso(
-            cloneNode(this._passo_),
             cloneNode(this._numInt_));
     }
 
@@ -38,31 +33,6 @@ public final class APasso extends PPasso
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAPasso(this);
-    }
-
-    public TPasso getPasso()
-    {
-        return this._passo_;
-    }
-
-    public void setPasso(TPasso node)
-    {
-        if(this._passo_ != null)
-        {
-            this._passo_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._passo_ = node;
     }
 
     public TNumInt getNumInt()
@@ -94,7 +64,6 @@ public final class APasso extends PPasso
     public String toString()
     {
         return ""
-            + toString(this._passo_)
             + toString(this._numInt_);
     }
 
@@ -102,12 +71,6 @@ public final class APasso extends PPasso
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._passo_ == child)
-        {
-            this._passo_ = null;
-            return;
-        }
-
         if(this._numInt_ == child)
         {
             this._numInt_ = null;
@@ -121,12 +84,6 @@ public final class APasso extends PPasso
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._passo_ == oldChild)
-        {
-            setPasso((TPasso) newChild);
-            return;
-        }
-
         if(this._numInt_ == oldChild)
         {
             setNumInt((TNumInt) newChild);

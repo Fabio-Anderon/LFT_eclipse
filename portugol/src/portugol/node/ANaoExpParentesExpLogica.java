@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMenosSoma extends PSoma
+public final class ANaoExpParentesExpLogica extends PExpLogica
 {
-    private TMenos _menos_;
+    private PExpLogica _expLogica_;
 
-    public AMenosSoma()
+    public ANaoExpParentesExpLogica()
     {
         // Constructor
     }
 
-    public AMenosSoma(
-        @SuppressWarnings("hiding") TMenos _menos_)
+    public ANaoExpParentesExpLogica(
+        @SuppressWarnings("hiding") PExpLogica _expLogica_)
     {
         // Constructor
-        setMenos(_menos_);
+        setExpLogica(_expLogica_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMenosSoma(
-            cloneNode(this._menos_));
+        return new ANaoExpParentesExpLogica(
+            cloneNode(this._expLogica_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMenosSoma(this);
+        ((Analysis) sw).caseANaoExpParentesExpLogica(this);
     }
 
-    public TMenos getMenos()
+    public PExpLogica getExpLogica()
     {
-        return this._menos_;
+        return this._expLogica_;
     }
 
-    public void setMenos(TMenos node)
+    public void setExpLogica(PExpLogica node)
     {
-        if(this._menos_ != null)
+        if(this._expLogica_ != null)
         {
-            this._menos_.parent(null);
+            this._expLogica_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AMenosSoma extends PSoma
             node.parent(this);
         }
 
-        this._menos_ = node;
+        this._expLogica_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._menos_);
+            + toString(this._expLogica_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._menos_ == child)
+        if(this._expLogica_ == child)
         {
-            this._menos_ = null;
+            this._expLogica_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AMenosSoma extends PSoma
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._menos_ == oldChild)
+        if(this._expLogica_ == oldChild)
         {
-            setMenos((TMenos) newChild);
+            setExpLogica((PExpLogica) newChild);
             return;
         }
 

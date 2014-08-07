@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AExpVirgula extends PExpVirgula
+public final class AMultExp extends PExp
 {
-    private PExp _exp_;
-    private TVirgula _virgula_;
+    private PExp _l_;
+    private PExp _r_;
 
-    public AExpVirgula()
+    public AMultExp()
     {
         // Constructor
     }
 
-    public AExpVirgula(
-        @SuppressWarnings("hiding") PExp _exp_,
-        @SuppressWarnings("hiding") TVirgula _virgula_)
+    public AMultExp(
+        @SuppressWarnings("hiding") PExp _l_,
+        @SuppressWarnings("hiding") PExp _r_)
     {
         // Constructor
-        setExp(_exp_);
+        setL(_l_);
 
-        setVirgula(_virgula_);
+        setR(_r_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AExpVirgula(
-            cloneNode(this._exp_),
-            cloneNode(this._virgula_));
+        return new AMultExp(
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAExpVirgula(this);
+        ((Analysis) sw).caseAMultExp(this);
     }
 
-    public PExp getExp()
+    public PExp getL()
     {
-        return this._exp_;
+        return this._l_;
     }
 
-    public void setExp(PExp node)
+    public void setL(PExp node)
     {
-        if(this._exp_ != null)
+        if(this._l_ != null)
         {
-            this._exp_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class AExpVirgula extends PExpVirgula
             node.parent(this);
         }
 
-        this._exp_ = node;
+        this._l_ = node;
     }
 
-    public TVirgula getVirgula()
+    public PExp getR()
     {
-        return this._virgula_;
+        return this._r_;
     }
 
-    public void setVirgula(TVirgula node)
+    public void setR(PExp node)
     {
-        if(this._virgula_ != null)
+        if(this._r_ != null)
         {
-            this._virgula_.parent(null);
+            this._r_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class AExpVirgula extends PExpVirgula
             node.parent(this);
         }
 
-        this._virgula_ = node;
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._exp_)
-            + toString(this._virgula_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._exp_ == child)
+        if(this._l_ == child)
         {
-            this._exp_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._virgula_ == child)
+        if(this._r_ == child)
         {
-            this._virgula_ = null;
+            this._r_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class AExpVirgula extends PExpVirgula
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._exp_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setExp((PExp) newChild);
+            setL((PExp) newChild);
             return;
         }
 
-        if(this._virgula_ == oldChild)
+        if(this._r_ == oldChild)
         {
-            setVirgula((TVirgula) newChild);
+            setR((PExp) newChild);
             return;
         }
 

@@ -5,46 +5,46 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AVariavelFator extends PFator
+public final class AExpParentesExp extends PExp
 {
-    private PVariavel _variavel_;
+    private PExp _exp_;
 
-    public AVariavelFator()
+    public AExpParentesExp()
     {
         // Constructor
     }
 
-    public AVariavelFator(
-        @SuppressWarnings("hiding") PVariavel _variavel_)
+    public AExpParentesExp(
+        @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
-        setVariavel(_variavel_);
+        setExp(_exp_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AVariavelFator(
-            cloneNode(this._variavel_));
+        return new AExpParentesExp(
+            cloneNode(this._exp_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAVariavelFator(this);
+        ((Analysis) sw).caseAExpParentesExp(this);
     }
 
-    public PVariavel getVariavel()
+    public PExp getExp()
     {
-        return this._variavel_;
+        return this._exp_;
     }
 
-    public void setVariavel(PVariavel node)
+    public void setExp(PExp node)
     {
-        if(this._variavel_ != null)
+        if(this._exp_ != null)
         {
-            this._variavel_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -57,23 +57,23 @@ public final class AVariavelFator extends PFator
             node.parent(this);
         }
 
-        this._variavel_ = node;
+        this._exp_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._variavel_);
+            + toString(this._exp_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._variavel_ == child)
+        if(this._exp_ == child)
         {
-            this._variavel_ = null;
+            this._exp_ = null;
             return;
         }
 
@@ -84,9 +84,9 @@ public final class AVariavelFator extends PFator
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._variavel_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setVariavel((PVariavel) newChild);
+            setExp((PExp) newChild);
             return;
         }
 

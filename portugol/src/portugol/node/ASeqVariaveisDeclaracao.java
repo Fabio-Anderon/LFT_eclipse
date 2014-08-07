@@ -6,51 +6,51 @@ import java.util.*;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AProdutoTermo extends PTermo
+public final class ASeqVariaveisDeclaracao extends PDeclaracao
 {
-    private PFator _fator_;
-    private final LinkedList<PMultFator> _multFator_ = new LinkedList<PMultFator>();
+    private PTipo _tipo_;
+    private final LinkedList<PVariavel> _variavel_ = new LinkedList<PVariavel>();
 
-    public AProdutoTermo()
+    public ASeqVariaveisDeclaracao()
     {
         // Constructor
     }
 
-    public AProdutoTermo(
-        @SuppressWarnings("hiding") PFator _fator_,
-        @SuppressWarnings("hiding") List<?> _multFator_)
+    public ASeqVariaveisDeclaracao(
+        @SuppressWarnings("hiding") PTipo _tipo_,
+        @SuppressWarnings("hiding") List<?> _variavel_)
     {
         // Constructor
-        setFator(_fator_);
+        setTipo(_tipo_);
 
-        setMultFator(_multFator_);
+        setVariavel(_variavel_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AProdutoTermo(
-            cloneNode(this._fator_),
-            cloneList(this._multFator_));
+        return new ASeqVariaveisDeclaracao(
+            cloneNode(this._tipo_),
+            cloneList(this._variavel_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAProdutoTermo(this);
+        ((Analysis) sw).caseASeqVariaveisDeclaracao(this);
     }
 
-    public PFator getFator()
+    public PTipo getTipo()
     {
-        return this._fator_;
+        return this._tipo_;
     }
 
-    public void setFator(PFator node)
+    public void setTipo(PTipo node)
     {
-        if(this._fator_ != null)
+        if(this._tipo_ != null)
         {
-            this._fator_.parent(null);
+            this._tipo_.parent(null);
         }
 
         if(node != null)
@@ -63,32 +63,32 @@ public final class AProdutoTermo extends PTermo
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._tipo_ = node;
     }
 
-    public LinkedList<PMultFator> getMultFator()
+    public LinkedList<PVariavel> getVariavel()
     {
-        return this._multFator_;
+        return this._variavel_;
     }
 
-    public void setMultFator(List<?> list)
+    public void setVariavel(List<?> list)
     {
-        for(PMultFator e : this._multFator_)
+        for(PVariavel e : this._variavel_)
         {
             e.parent(null);
         }
-        this._multFator_.clear();
+        this._variavel_.clear();
 
         for(Object obj_e : list)
         {
-            PMultFator e = (PMultFator) obj_e;
+            PVariavel e = (PVariavel) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._multFator_.add(e);
+            this._variavel_.add(e);
         }
     }
 
@@ -96,21 +96,21 @@ public final class AProdutoTermo extends PTermo
     public String toString()
     {
         return ""
-            + toString(this._fator_)
-            + toString(this._multFator_);
+            + toString(this._tipo_)
+            + toString(this._variavel_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._fator_ == child)
+        if(this._tipo_ == child)
         {
-            this._fator_ = null;
+            this._tipo_ = null;
             return;
         }
 
-        if(this._multFator_.remove(child))
+        if(this._variavel_.remove(child))
         {
             return;
         }
@@ -122,19 +122,19 @@ public final class AProdutoTermo extends PTermo
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._fator_ == oldChild)
+        if(this._tipo_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setTipo((PTipo) newChild);
             return;
         }
 
-        for(ListIterator<PMultFator> i = this._multFator_.listIterator(); i.hasNext();)
+        for(ListIterator<PVariavel> i = this._variavel_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PMultFator) newChild);
+                    i.set((PVariavel) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

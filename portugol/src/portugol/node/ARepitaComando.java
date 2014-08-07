@@ -8,13 +8,8 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class ARepitaComando extends PComando
 {
-    private TRepita _repita_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
-    private TAte _ate_;
-    private TAbreParantes _abreParantes_;
     private PExpLogica _expLogica_;
-    private TFechaParentes _fechaParentes_;
-    private TPtVirg _ptVirg_;
 
     public ARepitaComando()
     {
@@ -22,28 +17,13 @@ public final class ARepitaComando extends PComando
     }
 
     public ARepitaComando(
-        @SuppressWarnings("hiding") TRepita _repita_,
         @SuppressWarnings("hiding") List<?> _comando_,
-        @SuppressWarnings("hiding") TAte _ate_,
-        @SuppressWarnings("hiding") TAbreParantes _abreParantes_,
-        @SuppressWarnings("hiding") PExpLogica _expLogica_,
-        @SuppressWarnings("hiding") TFechaParentes _fechaParentes_,
-        @SuppressWarnings("hiding") TPtVirg _ptVirg_)
+        @SuppressWarnings("hiding") PExpLogica _expLogica_)
     {
         // Constructor
-        setRepita(_repita_);
-
         setComando(_comando_);
 
-        setAte(_ate_);
-
-        setAbreParantes(_abreParantes_);
-
         setExpLogica(_expLogica_);
-
-        setFechaParentes(_fechaParentes_);
-
-        setPtVirg(_ptVirg_);
 
     }
 
@@ -51,44 +31,14 @@ public final class ARepitaComando extends PComando
     public Object clone()
     {
         return new ARepitaComando(
-            cloneNode(this._repita_),
             cloneList(this._comando_),
-            cloneNode(this._ate_),
-            cloneNode(this._abreParantes_),
-            cloneNode(this._expLogica_),
-            cloneNode(this._fechaParentes_),
-            cloneNode(this._ptVirg_));
+            cloneNode(this._expLogica_));
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseARepitaComando(this);
-    }
-
-    public TRepita getRepita()
-    {
-        return this._repita_;
-    }
-
-    public void setRepita(TRepita node)
-    {
-        if(this._repita_ != null)
-        {
-            this._repita_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._repita_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -117,56 +67,6 @@ public final class ARepitaComando extends PComando
         }
     }
 
-    public TAte getAte()
-    {
-        return this._ate_;
-    }
-
-    public void setAte(TAte node)
-    {
-        if(this._ate_ != null)
-        {
-            this._ate_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._ate_ = node;
-    }
-
-    public TAbreParantes getAbreParantes()
-    {
-        return this._abreParantes_;
-    }
-
-    public void setAbreParantes(TAbreParantes node)
-    {
-        if(this._abreParantes_ != null)
-        {
-            this._abreParantes_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._abreParantes_ = node;
-    }
-
     public PExpLogica getExpLogica()
     {
         return this._expLogica_;
@@ -192,111 +92,26 @@ public final class ARepitaComando extends PComando
         this._expLogica_ = node;
     }
 
-    public TFechaParentes getFechaParentes()
-    {
-        return this._fechaParentes_;
-    }
-
-    public void setFechaParentes(TFechaParentes node)
-    {
-        if(this._fechaParentes_ != null)
-        {
-            this._fechaParentes_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._fechaParentes_ = node;
-    }
-
-    public TPtVirg getPtVirg()
-    {
-        return this._ptVirg_;
-    }
-
-    public void setPtVirg(TPtVirg node)
-    {
-        if(this._ptVirg_ != null)
-        {
-            this._ptVirg_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._ptVirg_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._repita_)
             + toString(this._comando_)
-            + toString(this._ate_)
-            + toString(this._abreParantes_)
-            + toString(this._expLogica_)
-            + toString(this._fechaParentes_)
-            + toString(this._ptVirg_);
+            + toString(this._expLogica_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._repita_ == child)
-        {
-            this._repita_ = null;
-            return;
-        }
-
         if(this._comando_.remove(child))
         {
-            return;
-        }
-
-        if(this._ate_ == child)
-        {
-            this._ate_ = null;
-            return;
-        }
-
-        if(this._abreParantes_ == child)
-        {
-            this._abreParantes_ = null;
             return;
         }
 
         if(this._expLogica_ == child)
         {
             this._expLogica_ = null;
-            return;
-        }
-
-        if(this._fechaParentes_ == child)
-        {
-            this._fechaParentes_ = null;
-            return;
-        }
-
-        if(this._ptVirg_ == child)
-        {
-            this._ptVirg_ = null;
             return;
         }
 
@@ -307,12 +122,6 @@ public final class ARepitaComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._repita_ == oldChild)
-        {
-            setRepita((TRepita) newChild);
-            return;
-        }
-
         for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
@@ -331,33 +140,9 @@ public final class ARepitaComando extends PComando
             }
         }
 
-        if(this._ate_ == oldChild)
-        {
-            setAte((TAte) newChild);
-            return;
-        }
-
-        if(this._abreParantes_ == oldChild)
-        {
-            setAbreParantes((TAbreParantes) newChild);
-            return;
-        }
-
         if(this._expLogica_ == oldChild)
         {
             setExpLogica((PExpLogica) newChild);
-            return;
-        }
-
-        if(this._fechaParentes_ == oldChild)
-        {
-            setFechaParentes((TFechaParentes) newChild);
-            return;
-        }
-
-        if(this._ptVirg_ == oldChild)
-        {
-            setPtVirg((TPtVirg) newChild);
             return;
         }
 

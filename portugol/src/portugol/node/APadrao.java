@@ -8,8 +8,6 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class APadrao extends PPadrao
 {
-    private TSenao _senao_;
-    private TDoisPts _doisPts_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public APadrao()
@@ -18,15 +16,9 @@ public final class APadrao extends PPadrao
     }
 
     public APadrao(
-        @SuppressWarnings("hiding") TSenao _senao_,
-        @SuppressWarnings("hiding") TDoisPts _doisPts_,
         @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
-        setSenao(_senao_);
-
-        setDoisPts(_doisPts_);
-
         setComando(_comando_);
 
     }
@@ -35,8 +27,6 @@ public final class APadrao extends PPadrao
     public Object clone()
     {
         return new APadrao(
-            cloneNode(this._senao_),
-            cloneNode(this._doisPts_),
             cloneList(this._comando_));
     }
 
@@ -44,56 +34,6 @@ public final class APadrao extends PPadrao
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseAPadrao(this);
-    }
-
-    public TSenao getSenao()
-    {
-        return this._senao_;
-    }
-
-    public void setSenao(TSenao node)
-    {
-        if(this._senao_ != null)
-        {
-            this._senao_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._senao_ = node;
-    }
-
-    public TDoisPts getDoisPts()
-    {
-        return this._doisPts_;
-    }
-
-    public void setDoisPts(TDoisPts node)
-    {
-        if(this._doisPts_ != null)
-        {
-            this._doisPts_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._doisPts_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -126,8 +66,6 @@ public final class APadrao extends PPadrao
     public String toString()
     {
         return ""
-            + toString(this._senao_)
-            + toString(this._doisPts_)
             + toString(this._comando_);
     }
 
@@ -135,18 +73,6 @@ public final class APadrao extends PPadrao
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._senao_ == child)
-        {
-            this._senao_ = null;
-            return;
-        }
-
-        if(this._doisPts_ == child)
-        {
-            this._doisPts_ = null;
-            return;
-        }
-
         if(this._comando_.remove(child))
         {
             return;
@@ -159,18 +85,6 @@ public final class APadrao extends PPadrao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._senao_ == oldChild)
-        {
-            setSenao((TSenao) newChild);
-            return;
-        }
-
-        if(this._doisPts_ == oldChild)
-        {
-            setDoisPts((TDoisPts) newChild);
-            return;
-        }
-
         for(ListIterator<PComando> i = this._comando_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)

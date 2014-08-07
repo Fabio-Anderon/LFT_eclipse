@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMultFator extends PMultFator
+public final class AExpMultIgualExpLogica extends PExpLogica
 {
-    private PMult _mult_;
-    private PFator _fator_;
+    private PExpLogica _l_;
+    private PExpLogica _r_;
 
-    public AMultFator()
+    public AExpMultIgualExpLogica()
     {
         // Constructor
     }
 
-    public AMultFator(
-        @SuppressWarnings("hiding") PMult _mult_,
-        @SuppressWarnings("hiding") PFator _fator_)
+    public AExpMultIgualExpLogica(
+        @SuppressWarnings("hiding") PExpLogica _l_,
+        @SuppressWarnings("hiding") PExpLogica _r_)
     {
         // Constructor
-        setMult(_mult_);
+        setL(_l_);
 
-        setFator(_fator_);
+        setR(_r_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMultFator(
-            cloneNode(this._mult_),
-            cloneNode(this._fator_));
+        return new AExpMultIgualExpLogica(
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMultFator(this);
+        ((Analysis) sw).caseAExpMultIgualExpLogica(this);
     }
 
-    public PMult getMult()
+    public PExpLogica getL()
     {
-        return this._mult_;
+        return this._l_;
     }
 
-    public void setMult(PMult node)
+    public void setL(PExpLogica node)
     {
-        if(this._mult_ != null)
+        if(this._l_ != null)
         {
-            this._mult_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class AMultFator extends PMultFator
             node.parent(this);
         }
 
-        this._mult_ = node;
+        this._l_ = node;
     }
 
-    public PFator getFator()
+    public PExpLogica getR()
     {
-        return this._fator_;
+        return this._r_;
     }
 
-    public void setFator(PFator node)
+    public void setR(PExpLogica node)
     {
-        if(this._fator_ != null)
+        if(this._r_ != null)
         {
-            this._fator_.parent(null);
+            this._r_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class AMultFator extends PMultFator
             node.parent(this);
         }
 
-        this._fator_ = node;
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._mult_)
-            + toString(this._fator_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._mult_ == child)
+        if(this._l_ == child)
         {
-            this._mult_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._fator_ == child)
+        if(this._r_ == child)
         {
-            this._fator_ = null;
+            this._r_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class AMultFator extends PMultFator
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._mult_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setMult((PMult) newChild);
+            setL((PExpLogica) newChild);
             return;
         }
 
-        if(this._fator_ == oldChild)
+        if(this._r_ == oldChild)
         {
-            setFator((PFator) newChild);
+            setR((PExpLogica) newChild);
             return;
         }
 

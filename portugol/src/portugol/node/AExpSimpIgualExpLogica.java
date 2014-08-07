@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANaoExpParentesExpNao extends PExpNao
+public final class AExpSimpIgualExpLogica extends PExpLogica
 {
-    private TNao _nao_;
-    private PExpParentes _expParentes_;
+    private PExp _l_;
+    private PExp _r_;
 
-    public ANaoExpParentesExpNao()
+    public AExpSimpIgualExpLogica()
     {
         // Constructor
     }
 
-    public ANaoExpParentesExpNao(
-        @SuppressWarnings("hiding") TNao _nao_,
-        @SuppressWarnings("hiding") PExpParentes _expParentes_)
+    public AExpSimpIgualExpLogica(
+        @SuppressWarnings("hiding") PExp _l_,
+        @SuppressWarnings("hiding") PExp _r_)
     {
         // Constructor
-        setNao(_nao_);
+        setL(_l_);
 
-        setExpParentes(_expParentes_);
+        setR(_r_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANaoExpParentesExpNao(
-            cloneNode(this._nao_),
-            cloneNode(this._expParentes_));
+        return new AExpSimpIgualExpLogica(
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANaoExpParentesExpNao(this);
+        ((Analysis) sw).caseAExpSimpIgualExpLogica(this);
     }
 
-    public TNao getNao()
+    public PExp getL()
     {
-        return this._nao_;
+        return this._l_;
     }
 
-    public void setNao(TNao node)
+    public void setL(PExp node)
     {
-        if(this._nao_ != null)
+        if(this._l_ != null)
         {
-            this._nao_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ANaoExpParentesExpNao extends PExpNao
             node.parent(this);
         }
 
-        this._nao_ = node;
+        this._l_ = node;
     }
 
-    public PExpParentes getExpParentes()
+    public PExp getR()
     {
-        return this._expParentes_;
+        return this._r_;
     }
 
-    public void setExpParentes(PExpParentes node)
+    public void setR(PExp node)
     {
-        if(this._expParentes_ != null)
+        if(this._r_ != null)
         {
-            this._expParentes_.parent(null);
+            this._r_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ANaoExpParentesExpNao extends PExpNao
             node.parent(this);
         }
 
-        this._expParentes_ = node;
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._nao_)
-            + toString(this._expParentes_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._nao_ == child)
+        if(this._l_ == child)
         {
-            this._nao_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._expParentes_ == child)
+        if(this._r_ == child)
         {
-            this._expParentes_ = null;
+            this._r_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ANaoExpParentesExpNao extends PExpNao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._nao_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setNao((TNao) newChild);
+            setL((PExp) newChild);
             return;
         }
 
-        if(this._expParentes_ == oldChild)
+        if(this._r_ == oldChild)
         {
-            setExpParentes((PExpParentes) newChild);
+            setR((PExp) newChild);
             return;
         }
 

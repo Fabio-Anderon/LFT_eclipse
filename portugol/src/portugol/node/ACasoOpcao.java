@@ -8,9 +8,7 @@ import portugol.analysis.*;
 @SuppressWarnings("nls")
 public final class ACasoOpcao extends PCasoOpcao
 {
-    private TCaso _caso_;
     private PValor _valor_;
-    private TDoisPts _doisPts_;
     private final LinkedList<PComando> _comando_ = new LinkedList<PComando>();
 
     public ACasoOpcao()
@@ -19,17 +17,11 @@ public final class ACasoOpcao extends PCasoOpcao
     }
 
     public ACasoOpcao(
-        @SuppressWarnings("hiding") TCaso _caso_,
         @SuppressWarnings("hiding") PValor _valor_,
-        @SuppressWarnings("hiding") TDoisPts _doisPts_,
         @SuppressWarnings("hiding") List<?> _comando_)
     {
         // Constructor
-        setCaso(_caso_);
-
         setValor(_valor_);
-
-        setDoisPts(_doisPts_);
 
         setComando(_comando_);
 
@@ -39,9 +31,7 @@ public final class ACasoOpcao extends PCasoOpcao
     public Object clone()
     {
         return new ACasoOpcao(
-            cloneNode(this._caso_),
             cloneNode(this._valor_),
-            cloneNode(this._doisPts_),
             cloneList(this._comando_));
     }
 
@@ -49,31 +39,6 @@ public final class ACasoOpcao extends PCasoOpcao
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseACasoOpcao(this);
-    }
-
-    public TCaso getCaso()
-    {
-        return this._caso_;
-    }
-
-    public void setCaso(TCaso node)
-    {
-        if(this._caso_ != null)
-        {
-            this._caso_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._caso_ = node;
     }
 
     public PValor getValor()
@@ -99,31 +64,6 @@ public final class ACasoOpcao extends PCasoOpcao
         }
 
         this._valor_ = node;
-    }
-
-    public TDoisPts getDoisPts()
-    {
-        return this._doisPts_;
-    }
-
-    public void setDoisPts(TDoisPts node)
-    {
-        if(this._doisPts_ != null)
-        {
-            this._doisPts_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._doisPts_ = node;
     }
 
     public LinkedList<PComando> getComando()
@@ -156,9 +96,7 @@ public final class ACasoOpcao extends PCasoOpcao
     public String toString()
     {
         return ""
-            + toString(this._caso_)
             + toString(this._valor_)
-            + toString(this._doisPts_)
             + toString(this._comando_);
     }
 
@@ -166,21 +104,9 @@ public final class ACasoOpcao extends PCasoOpcao
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._caso_ == child)
-        {
-            this._caso_ = null;
-            return;
-        }
-
         if(this._valor_ == child)
         {
             this._valor_ = null;
-            return;
-        }
-
-        if(this._doisPts_ == child)
-        {
-            this._doisPts_ = null;
             return;
         }
 
@@ -196,21 +122,9 @@ public final class ACasoOpcao extends PCasoOpcao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._caso_ == oldChild)
-        {
-            setCaso((TCaso) newChild);
-            return;
-        }
-
         if(this._valor_ == oldChild)
         {
             setValor((PValor) newChild);
-            return;
-        }
-
-        if(this._doisPts_ == oldChild)
-        {
-            setDoisPts((TDoisPts) newChild);
             return;
         }
 

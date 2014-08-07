@@ -5,51 +5,51 @@ package portugol.node;
 import portugol.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADeclVar extends PDeclVar
+public final class AExpComparacaoExpLogica extends PExpLogica
 {
-    private PVariavel _variavel_;
-    private TVirgula _virgula_;
+    private PExp _l_;
+    private PExp _r_;
 
-    public ADeclVar()
+    public AExpComparacaoExpLogica()
     {
         // Constructor
     }
 
-    public ADeclVar(
-        @SuppressWarnings("hiding") PVariavel _variavel_,
-        @SuppressWarnings("hiding") TVirgula _virgula_)
+    public AExpComparacaoExpLogica(
+        @SuppressWarnings("hiding") PExp _l_,
+        @SuppressWarnings("hiding") PExp _r_)
     {
         // Constructor
-        setVariavel(_variavel_);
+        setL(_l_);
 
-        setVirgula(_virgula_);
+        setR(_r_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ADeclVar(
-            cloneNode(this._variavel_),
-            cloneNode(this._virgula_));
+        return new AExpComparacaoExpLogica(
+            cloneNode(this._l_),
+            cloneNode(this._r_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADeclVar(this);
+        ((Analysis) sw).caseAExpComparacaoExpLogica(this);
     }
 
-    public PVariavel getVariavel()
+    public PExp getL()
     {
-        return this._variavel_;
+        return this._l_;
     }
 
-    public void setVariavel(PVariavel node)
+    public void setL(PExp node)
     {
-        if(this._variavel_ != null)
+        if(this._l_ != null)
         {
-            this._variavel_.parent(null);
+            this._l_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ADeclVar extends PDeclVar
             node.parent(this);
         }
 
-        this._variavel_ = node;
+        this._l_ = node;
     }
 
-    public TVirgula getVirgula()
+    public PExp getR()
     {
-        return this._virgula_;
+        return this._r_;
     }
 
-    public void setVirgula(TVirgula node)
+    public void setR(PExp node)
     {
-        if(this._virgula_ != null)
+        if(this._r_ != null)
         {
-            this._virgula_.parent(null);
+            this._r_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ADeclVar extends PDeclVar
             node.parent(this);
         }
 
-        this._virgula_ = node;
+        this._r_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._variavel_)
-            + toString(this._virgula_);
+            + toString(this._l_)
+            + toString(this._r_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._variavel_ == child)
+        if(this._l_ == child)
         {
-            this._variavel_ = null;
+            this._l_ = null;
             return;
         }
 
-        if(this._virgula_ == child)
+        if(this._r_ == child)
         {
-            this._virgula_ = null;
+            this._r_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ADeclVar extends PDeclVar
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._variavel_ == oldChild)
+        if(this._l_ == oldChild)
         {
-            setVariavel((PVariavel) newChild);
+            setL((PExp) newChild);
             return;
         }
 
-        if(this._virgula_ == oldChild)
+        if(this._r_ == oldChild)
         {
-            setVirgula((TVirgula) newChild);
+            setR((PExp) newChild);
             return;
         }
 

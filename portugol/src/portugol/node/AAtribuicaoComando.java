@@ -8,9 +8,7 @@ import portugol.analysis.*;
 public final class AAtribuicaoComando extends PComando
 {
     private PVariavel _variavel_;
-    private TAtribuicao _atribuicao_;
     private PExp _exp_;
-    private TPtVirg _ptVirg_;
 
     public AAtribuicaoComando()
     {
@@ -19,18 +17,12 @@ public final class AAtribuicaoComando extends PComando
 
     public AAtribuicaoComando(
         @SuppressWarnings("hiding") PVariavel _variavel_,
-        @SuppressWarnings("hiding") TAtribuicao _atribuicao_,
-        @SuppressWarnings("hiding") PExp _exp_,
-        @SuppressWarnings("hiding") TPtVirg _ptVirg_)
+        @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
         setVariavel(_variavel_);
 
-        setAtribuicao(_atribuicao_);
-
         setExp(_exp_);
-
-        setPtVirg(_ptVirg_);
 
     }
 
@@ -39,9 +31,7 @@ public final class AAtribuicaoComando extends PComando
     {
         return new AAtribuicaoComando(
             cloneNode(this._variavel_),
-            cloneNode(this._atribuicao_),
-            cloneNode(this._exp_),
-            cloneNode(this._ptVirg_));
+            cloneNode(this._exp_));
     }
 
     @Override
@@ -75,31 +65,6 @@ public final class AAtribuicaoComando extends PComando
         this._variavel_ = node;
     }
 
-    public TAtribuicao getAtribuicao()
-    {
-        return this._atribuicao_;
-    }
-
-    public void setAtribuicao(TAtribuicao node)
-    {
-        if(this._atribuicao_ != null)
-        {
-            this._atribuicao_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._atribuicao_ = node;
-    }
-
     public PExp getExp()
     {
         return this._exp_;
@@ -125,39 +90,12 @@ public final class AAtribuicaoComando extends PComando
         this._exp_ = node;
     }
 
-    public TPtVirg getPtVirg()
-    {
-        return this._ptVirg_;
-    }
-
-    public void setPtVirg(TPtVirg node)
-    {
-        if(this._ptVirg_ != null)
-        {
-            this._ptVirg_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._ptVirg_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
             + toString(this._variavel_)
-            + toString(this._atribuicao_)
-            + toString(this._exp_)
-            + toString(this._ptVirg_);
+            + toString(this._exp_);
     }
 
     @Override
@@ -170,21 +108,9 @@ public final class AAtribuicaoComando extends PComando
             return;
         }
 
-        if(this._atribuicao_ == child)
-        {
-            this._atribuicao_ = null;
-            return;
-        }
-
         if(this._exp_ == child)
         {
             this._exp_ = null;
-            return;
-        }
-
-        if(this._ptVirg_ == child)
-        {
-            this._ptVirg_ = null;
             return;
         }
 
@@ -201,21 +127,9 @@ public final class AAtribuicaoComando extends PComando
             return;
         }
 
-        if(this._atribuicao_ == oldChild)
-        {
-            setAtribuicao((TAtribuicao) newChild);
-            return;
-        }
-
         if(this._exp_ == oldChild)
         {
             setExp((PExp) newChild);
-            return;
-        }
-
-        if(this._ptVirg_ == oldChild)
-        {
-            setPtVirg((TPtVirg) newChild);
             return;
         }
 
