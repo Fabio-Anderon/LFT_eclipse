@@ -11,16 +11,13 @@ import portugol.lexer.New_Lexer;
 import portugol.lexer.LexerException;
 
 
-public class test_parser {
+public class Test_parser {
 
-	public static void main(String[] args) throws IOException, ParserException, LexerException {
-		//File f = new File("/Documentos/LFT_eclipse/LFT_eclipse/portugol/src/portugol/main_test/Test_Parser.txt");
-		File f = new File("/home/fabio/git/LFT_eclipse/portugol/src/portugol/main_test/Test_Parser.txt");
+	public Test_parser(String dir) throws IOException, ParserException, LexerException {
+		File f = new File(dir);
 		Parser gramatica = new Parser(new New_Lexer(new PushbackReader(new FileReader(f))));
 		
 		System.out.println(gramatica.parse().getPPrograma());
-		
-		
 		
 		
 	}

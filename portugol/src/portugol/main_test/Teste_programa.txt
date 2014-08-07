@@ -16,9 +16,9 @@ fim se;
 
 //se
 se(soma<mult)entao	
-escreva('A SOMA � MENOR');
+escreva('A SOMA EH MENOR');
 senao
-escreva('O PRODUTO � MENOR OU IGUAL');
+escreva('O PRODUTO EH MENOR OU IGUAL');
 fim se;
 
 //avalie
