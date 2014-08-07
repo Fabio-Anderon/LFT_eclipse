@@ -1,4 +1,4 @@
-package portugol.test;
+package portugol.main_test;
 
 import java.io.File;
 import java.io.FileReader;
@@ -11,8 +11,8 @@ import portugol.node.EOF;
 
 public class test_lexer {
     public static void main(String[] args) throws LexerException, IOException {
-        //File f = new File("E:\\Documentos\\LFT_eclipse\\LFT_eclipse\\portugol\\src\\portugol\\test\\Test_Lexer.txt");
-    	File f = new File("/home/fabio/git/LFT_eclipse/portugol/src/portugol/test/Test_Lexer.txt");
+        //File f = new File("/Documentos/LFT_eclipse/LFT_eclipse/portugol/src/portugol/main_test/Test_Lexer.txt");
+    	File f = new File("/home/fabio/git/LFT_eclipse/portugol/src/portugol/main_test/Test_Lexer.txt");
         New_Lexer l = new New_Lexer(new PushbackReader(new FileReader(f)));
         String lexer = "";
         int linha = 0;
