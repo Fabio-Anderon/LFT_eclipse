@@ -47,7 +47,7 @@ public class GerarGramatica {
 				} catch (IOException e) {
 					System.exit(0);
 				}
-			
+				break;
 			case 2:
 				//Chama o metodo do Menu Principal
 				Compilador.menuCompleto();
