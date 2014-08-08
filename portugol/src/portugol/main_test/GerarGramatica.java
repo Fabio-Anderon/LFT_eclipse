@@ -18,7 +18,8 @@ public class GerarGramatica {
 		do {
 			System.out.println(" ********** GERAR GRAMATICA ********** \n"
 					+ " 1 : Para rodar o SableCC na Nossa Gramatica  \n"
-					+ " 2 : Para Sair \n");
+					+ " 2 : Para testar Gramatica j· gerada \n"
+					+ " 3 : Para Sair \n");
 
 			t = new Scanner(System.in);
 			try {
@@ -46,12 +47,13 @@ public class GerarGramatica {
 				} catch (IOException e) {
 					System.exit(0);
 				}
-
-				//Chama o m√©todo do Menu Principal
+			
+			case 2:
+				//Chama o metodo do Menu Principal
 				Compilador.menuCompleto();
 				continuar=false;
 				break;
-			case 2:
+			case 3:
 				continuar = false;
 				System.out.println(" FIM !");
 				break;

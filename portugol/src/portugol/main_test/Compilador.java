@@ -14,8 +14,9 @@ public class Compilador {
 
 	public static void menuCompleto() throws IOException {
 
-		String dirPrograma = "/home/fabio/git/LFT_eclipse/portugol/src/portugol/main_test/Teste_programa.txt";
-		String dirGramatica = "/home/fabio/git/LFT_eclipse/portugol/src/portugol.grammar";
+		String dir = new File("").getAbsolutePath();
+		String dirPrograma = dir+"/src/portugol/main_test/Teste_programa.txt";
+		String dirGramatica = dir+"/src/portugol.grammar";
 
 		Scanner t;
 		int op = 0;

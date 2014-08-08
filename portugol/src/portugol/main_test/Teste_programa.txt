@@ -1,13 +1,17 @@
 programa Example
 
 inicio
+
 inteiro : num1, num2, soma, mult;
+caractere : x [10];
+
 num1 <- 10;
 num2 <- 2;
 soma <- num1+num2;
 mult <- num1*num2;
 
-// Não permite se(num1 == num2 == soma)entao
+
+// Nao permite se(num1 == num2 == soma)entao
 
 //Permite somente este tipo de cadeia de op logico
 se((num1 = num2) = (soma = mult))entao
@@ -41,7 +45,10 @@ ate (1+2 <> 2+1);
 
 //para normal
 para i de 1 ate 5 faca
-/*para /*passo*/*/
+
+/*para 					/*
+passo*/					*/
+
 para j de 1 passo 2 ate 10 faca
 escreva('Valor de i = '+i);
 escreva('Valor de j = '+j);
