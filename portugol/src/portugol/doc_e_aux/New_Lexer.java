@@ -1,5 +1,5 @@
-package portugol.lexer;
-
+package portugol.doc_e_aux;
+import portugol.lexer.*;
 import portugol.node.*;
 
 public class New_Lexer extends Lexer {

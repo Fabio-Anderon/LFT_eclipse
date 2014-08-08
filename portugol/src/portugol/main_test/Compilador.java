@@ -12,7 +12,7 @@ import portugol.parser.ParserException;
 
 public class Compilador {
 
-	public static void main(String[] args) throws IOException {
+	public static void menuCompleto() throws IOException {
 
 		String dirPrograma = "/home/fabio/git/LFT_eclipse/portugol/src/portugol/main_test/Teste_programa.txt";
 		String dirGramatica = "/home/fabio/git/LFT_eclipse/portugol/src/portugol.grammar";

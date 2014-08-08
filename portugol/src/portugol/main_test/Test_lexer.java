@@ -5,13 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PushbackReader;
 
-import portugol.lexer.New_Lexer;
+import portugol.doc_e_aux.New_Lexer;
 import portugol.lexer.LexerException;
 import portugol.node.EOF;
 
 public class Test_lexer {
-	private String dir;
-	
+		
     public Test_lexer(String dir) throws LexerException, IOException {
     	File f = new File(dir);
         New_Lexer l = new New_Lexer(new PushbackReader(new FileReader(f)));
