@@ -1,27 +1,30 @@
------------------------------------------------------------------------------------------
-----------------TRABALHO DE LFT - PORTUGOL.GRAMMAR
+---------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------TRABALHO DE LFT - PORTUGOL.GRAMMAR---------------------------------------------------------
 
 
-Alunos: Anderson dos Santos Nunes
-		Fábio Nascimento Santos
+Alunos: 
+>> Anderson dos Santos Nunes
+>> Fábio Nascimento Santos
 
+Professores Responsáveis: 
+>> Breno Piva
+>> Kalil
+
+Ferramentas utilizadas:
+>> IDE: Eclipse
+>> SableCC, versão 3.7		
 		
-		
-	Nosso projeto obteve um resultado muito bom, não foi totalmente o esperado, pois
-gostaríamos de ter tido tempo para a parte Semântica da linguagem, mas de uma maneira
-geral, fizemos a parte Léxica, a parte Sintática e a Sintática Abstrata.
-	Em falando de Léxica, construímos todos os Tokens com base na especificação versão 4,
-e chegamos a necessidade de criar alguns Helpers para ajudar a concluir esta fase!
-	Quando fomos fazer a Sintática, percebemos a dificuldade que o SableCC tem em
-construir a linguagem, geralmente dando erro Shift/Reduz, onde ele deveria preferir por
-Shift. Então foi-se necessário criar uma lógica que não alterasse a gramática, e tão pouco
-as precedências dentre os operadores!
-	Ao fazer a Árvore Sintática Abstrata, novamente tivemos que alterar a Sintática para que
-os nós da árvore fossem feitos de maneira corretas, e só tivesse o que realmente é necessário
-nas folhas.
-	O trabalho foi bem gratificante, principalmente quando conseguíamos colocar em prática
-todo o conhecimento obtido através das leituras do livro do Dragão e o Livro de Teoria da
-Computação! Apesar do SableCC dar alguns erros por besteira, ele ajuda muito, pois ele nos
-mostra em que linha está dando o erro. Assim, mesmo que o erro não seja propriamente naquela
-linha, é possível identificá-lo demaneira mais rápida e precisamente corrigi-lo.
-	Nossos testes foram para o 
+1- UMA BREVE VISÃO DO QUE FOI O PROJETO:
+
+	Nosso projeto obteve um resultado muito bom, não foi totalmente o esperado pois gostaríamos de ter tido mais tempo para a parte Semântica da linguagem, mas de uma maneira geral, fizemos a parte Léxica, a Sintática e a Sintática Abstrata e isso nos ajudou a aumentar e assimilar o conceito visto em aula ao nosso conhecimento sobre compiladores, e os passos para a compilação.
+	Ao começarmos a Léxica construimos todos os Tokens com base na especificação versão 4, e chegamos a necessidade de criar os Helpers para ajudar a concluir esta fase, e além disso percebemos que para que comentários aninhados era necessário aplicar um novo conhecimento chamado State (Estado), que faz como um automato com pilha e consegue contar e saber se está balanceado!
+	Quando fomos fazer a Sintática, percebemos a dificuldade que o SableCC tem em construir a linguagem, mesmo a gramática estando em LALR(1) (ao qual ele reconhece), geralmente dando erro Shift/Reduz, onde ele deveria preferir por Shift e não dar conflito. Então foi-se necessário criar uma lógica que não alterasse a gramática, e tão pouco as precedências dentre os operadores, para que se conseguisse concluir esta fase!
+	Ao fazer a Árvore Sintática Abstrata, novamente tivemos que alterar a Sintática Concreta, para criar uma árvore onde abstraisse as transformações intermediárias ou pode-se dizer auxiliares, que serão realmente utilizada na semântica aplicada a esta árvore abstrata, e assim, sendo um tipo de otimização da gramática.
+	O trabalho foi bem gratificante, principalmente quando conseguíamos colocar em prática todo o conhecimento obtido através das leituras do livro do Dragão e o Livro de Teoria da Computação! Apesar do SableCC dar alguns erros por besteira, ele ajuda muito, pois nos mostra em que linha está dando o erro. Assim, mesmo que o erro não seja propriamente naquela linha, é possível identificá-lo de maneira mais rápida e precisamente corrigi-lo.
+
+2 - ORGANIZAÇÃO DOS ARQUIVOS (READ ME)
+
+
+
+
+	
