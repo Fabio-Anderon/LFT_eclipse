@@ -4,6 +4,7 @@ inicio
 
 inteiro : num1, num2, soma, mult;
 caractere : x [10];
+const constante 'Anderson';
 
 num1 <- 10;
 num2 <- 2;
