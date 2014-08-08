@@ -1,13 +1,12 @@
 package portugol.main_test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PushbackReader;
 
 import portugol.parser.*;
-import portugol.lexer.New_Lexer;
+import portugol.doc_e_aux.New_Lexer;
 import portugol.lexer.LexerException;
 
 
